@@ -2,6 +2,9 @@
 title: "Job Market Analysis Group 3"
 ---
 
-This is a Quarto website.
+# Introduction
+## History
+Job Market in US for Data Analytics graduate is booming. This analysis is our project to expolre the career posibilities after graduation.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Background
+# Literature

@@ -7,15 +7,15 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - about.qmd
-
+      - href: data_analysis.ipynb
+        text: Data Analysis
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      - lumen
     css: styles.css
     toc: true
+    number-sections: true
 
 
 

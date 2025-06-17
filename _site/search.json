@@ -1,0 +1,37 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "data_analysis.html",
+    "href": "data_analysis.html",
+    "title": "Job Market Analysis Group 3",
+    "section": "",
+    "text": "Job Market in US for Data Analytics graduate is booming. This analysis is our project to expolre the career posibilities after graduation.\n\nx=1\ny=2\nz=x+y\nprint(x, y, z)"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Job Market Analysis Group 3",
+    "section": "",
+    "text": "Job Market in US for Data Analytics graduate is booming. This analysis is our project to expolre the career posibilities after graduation."
+  },
+  {
+    "objectID": "index.html#background",
+    "href": "index.html#background",
+    "title": "Job Market Analysis Group 3",
+    "section": "",
+    "text": "Job Market in US for Data Analytics graduate is booming. This analysis is our project to expolre the career posibilities after graduation."
+  },
+  {
+    "objectID": "index.html#history",
+    "href": "index.html#history",
+    "title": "Job Market Analysis Group 3",
+    "section": "",
+    "text": "Job Market in US for Data Analytics graduate is booming. This analysis is our project to expolre the career posibilities after graduation."
+  }
+]
