@@ -177,7 +177,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/06/19 18:06:34 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/06/19 18:31:54 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -317,7 +317,7 @@ root
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>25/06/19 18:06:50 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+<pre><code>25/06/19 18:32:10 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -342,6 +342,9 @@ only showing top 5 rows
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>]</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="op">*</span>columns_to_drop)</span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>df.show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>                                                                                </code></pre>
+</div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+-----------------+--------+---------+--------+--------------------+--------------------+-------------------+--------------------+--------------------+---------------+----------------+--------+--------------------+-----------+-------------------+----------------+---------------------+-------------+-------------------+-------------+------------------+---------------+--------------------+--------------------+--------------------+-------------+------+-----------+----------------+-------------------+---------+-----------+--------------------+--------------------+-------------+------+--------------+-----+--------------------+-----+----------+---------------+--------------------+---------------+--------------------+------------+--------------------+------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+------------------+-------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+----------+---------------+----------+---------------+---------------+--------------------+--------------+--------------------+--------------------------+-------------------------------+--------------------+-------------------------+-----------------------------+----------------------------------+-----------------+----------------------+-----------------------+----------------------------+------------------+-----------------------+--------------------+--------------------+-------+---------------+---------------+-----------------+----------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+
 |LAST_UPDATED_DATE|  POSTED|  EXPIRED|DURATION|        SOURCE_TYPES|             SOURCES|ACTIVE_SOURCES_INFO|           TITLE_RAW|                BODY|MODELED_EXPIRED|MODELED_DURATION| COMPANY|        COMPANY_NAME|COMPANY_RAW|COMPANY_IS_STAFFING|EDUCATION_LEVELS|EDUCATION_LEVELS_NAME|MIN_EDULEVELS| MIN_EDULEVELS_NAME|MAX_EDULEVELS|MAX_EDULEVELS_NAME|EMPLOYMENT_TYPE|EMPLOYMENT_TYPE_NAME|MIN_YEARS_EXPERIENCE|MAX_YEARS_EXPERIENCE|IS_INTERNSHIP|SALARY|REMOTE_TYPE|REMOTE_TYPE_NAME|ORIGINAL_PAY_PERIOD|SALARY_TO|SALARY_FROM|            LOCATION|                CITY|    CITY_NAME|COUNTY|   COUNTY_NAME|  MSA|            MSA_NAME|STATE|STATE_NAME|COUNTY_OUTGOING|COUNTY_NAME_OUTGOING|COUNTY_INCOMING|COUNTY_NAME_INCOMING|MSA_OUTGOING|   MSA_NAME_OUTGOING|MSA_INCOMING|   MSA_NAME_INCOMING|         NAICS2_NAME|         NAICS3_NAME|         NAICS4_NAME|         NAICS5_NAME|         NAICS6_NAME|             TITLE|         TITLE_NAME|         TITLE_CLEAN|              SKILLS|         SKILLS_NAME|  SPECIALIZED_SKILLS|SPECIALIZED_SKILLS_NAME|      CERTIFICATIONS| CERTIFICATIONS_NAME|       COMMON_SKILLS|  COMMON_SKILLS_NAME|     SOFTWARE_SKILLS|SOFTWARE_SKILLS_NAME|      ONET|           ONET_NAME| ONET_2019|      ONET_2019_NAME|                CIP6|           CIP6_NAME|                CIP4|           CIP4_NAME|                CIP2|           CIP2_NAME|SOC_2021_2|     SOC_2021_2_NAME|SOC_2021_3|     SOC_2021_3_NAME|SOC_2021_4|SOC_2021_4_NAME|SOC_2021_5|SOC_2021_5_NAME|LOT_CAREER_AREA|LOT_CAREER_AREA_NAME|LOT_OCCUPATION| LOT_OCCUPATION_NAME|LOT_SPECIALIZED_OCCUPATION|LOT_SPECIALIZED_OCCUPATION_NAME|LOT_OCCUPATION_GROUP|LOT_OCCUPATION_GROUP_NAME|LOT_V6_SPECIALIZED_OCCUPATION|LOT_V6_SPECIALIZED_OCCUPATION_NAME|LOT_V6_OCCUPATION|LOT_V6_OCCUPATION_NAME|LOT_V6_OCCUPATION_GROUP|LOT_V6_OCCUPATION_GROUP_NAME|LOT_V6_CAREER_AREA|LOT_V6_CAREER_AREA_NAME|          SOC_2_NAME|          SOC_3_NAME|  SOC_4|     SOC_4_NAME|     SOC_5_NAME|LIGHTCAST_SECTORS|LIGHTCAST_SECTORS_NAME|NAICS_2022_2|   NAICS_2022_2_NAME|NAICS_2022_3|   NAICS_2022_3_NAME|NAICS_2022_4|   NAICS_2022_4_NAME|NAICS_2022_5|   NAICS_2022_5_NAME|NAICS_2022_6|   NAICS_2022_6_NAME|
@@ -357,95 +360,207 @@ only showing top 5 rows
 </div>
 </div>
 <div id="e8e75209" class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill missing values</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Salary"</span>].fillna(df[<span class="st">"Salary"</span>].median(), inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Industry"</span>].fillna(<span class="st">"Unknown"</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ConnectionRefusedError</span>                    Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># Fill missing values</span>
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">df</span><span class="ansi-yellow-bg">[</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-fg ansi-yellow-bg">Salary</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-bg">]</span>.fillna(df[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Salary</span><span class="ansi-yellow-fg">"</span>].median(), inplace=<span style="font-weight:bold;color:rgb(0,135,0)">True</span>)
-<span class="ansi-green-fg">      3</span> df[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Industry</span><span class="ansi-yellow-fg">"</span>].fillna(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Unknown</span><span class="ansi-yellow-fg">"</span>, inplace=<span style="font-weight:bold;color:rgb(0,135,0)">True</span>)
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/pyspark/sql/dataframe.py:3080</span>, in <span class="ansi-cyan-fg">DataFrame.__getitem__</span><span class="ansi-blue-fg">(self, item)</span>
-<span class="ansi-green-fg">   3008</span> <span style="font-style:italic" class="ansi-yellow-fg">"""Returns the column as a :class:`Column`.</span>
-<span class="ansi-green-fg">   3009</span> 
-<span class="ansi-green-fg">   3010</span> <span style="font-style:italic" class="ansi-yellow-fg">.. versionadded:: 1.3.0</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   3077</span> <span style="font-style:italic" class="ansi-yellow-fg">+---+----+</span>
-<span class="ansi-green-fg">   3078</span> <span style="font-style:italic" class="ansi-yellow-fg">"""</span>
-<span class="ansi-green-fg">   3079</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(item, <span style="color:rgb(0,135,0)">str</span>):
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">3080</span>     jc = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_jdf</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">apply</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">item</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">   3081</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> Column(jc)
-<span class="ansi-green-fg">   3082</span> <span style="font-weight:bold;color:rgb(0,135,0)">elif</span> <span style="color:rgb(0,135,0)">isinstance</span>(item, Column):
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/java_gateway.py:1321</span>, in <span class="ansi-cyan-fg">JavaMember.__call__</span><span class="ansi-blue-fg">(self, *args)</span>
-<span class="ansi-green-fg">   1314</span> args_command, temp_args = <span style="color:rgb(0,135,0)">self</span>._build_args(*args)
-<span class="ansi-green-fg">   1316</span> command = proto.CALL_COMMAND_NAME +\
-<span class="ansi-green-fg">   1317</span>     <span style="color:rgb(0,135,0)">self</span>.command_header +\
-<span class="ansi-green-fg">   1318</span>     args_command +\
-<span class="ansi-green-fg">   1319</span>     proto.END_COMMAND_PART
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1321</span> answer = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">gateway_client</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">send_command</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">command</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">   1322</span> return_value = get_return_value(
-<span class="ansi-green-fg">   1323</span>     answer, <span style="color:rgb(0,135,0)">self</span>.gateway_client, <span style="color:rgb(0,135,0)">self</span>.target_id, <span style="color:rgb(0,135,0)">self</span>.name)
-<span class="ansi-green-fg">   1325</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> temp_arg <span style="font-weight:bold;color:rgb(175,0,255)">in</span> temp_args:
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/java_gateway.py:1036</span>, in <span class="ansi-cyan-fg">GatewayClient.send_command</span><span class="ansi-blue-fg">(self, command, retry, binary)</span>
-<span class="ansi-green-fg">   1015</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">send_command</span>(<span style="color:rgb(0,135,0)">self</span>, command, retry=<span style="font-weight:bold;color:rgb(0,135,0)">True</span>, binary=<span style="font-weight:bold;color:rgb(0,135,0)">False</span>):
-<span class="ansi-green-fg">   1016</span> <span style="color:rgb(188,188,188)">    </span><span style="font-style:italic" class="ansi-yellow-fg">"""Sends a command to the JVM. This method is not intended to be</span>
-<span class="ansi-green-fg">   1017</span> <span style="font-style:italic" class="ansi-yellow-fg">       called directly by Py4J users. It is usually called by</span>
-<span class="ansi-green-fg">   1018</span> <span style="font-style:italic" class="ansi-yellow-fg">       :class:`JavaMember` instances.</span>
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1034</span> <span style="font-style:italic" class="ansi-yellow-fg">     if `binary` is `True`.</span>
-<span class="ansi-green-fg">   1035</span> <span style="font-style:italic" class="ansi-yellow-fg">    """</span>
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1036</span>     connection = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_get_connection</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">   1037</span>     <span style="font-weight:bold;color:rgb(0,135,0)">try</span>:
-<span class="ansi-green-fg">   1038</span>         response = connection.send_command(command)
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/clientserver.py:284</span>, in <span class="ansi-cyan-fg">JavaClient._get_connection</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">    281</span>     <span style="font-weight:bold;color:rgb(0,135,0)">pass</span>
-<span class="ansi-green-fg">    283</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> connection <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span> <span style="font-weight:bold;color:rgb(175,0,255)">or</span> connection.socket <span style="font-weight:bold;color:rgb(175,0,255)">is</span> <span style="font-weight:bold;color:rgb(0,135,0)">None</span>:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">284</span>     connection = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_create_new_connection</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    285</span> <span style="font-weight:bold;color:rgb(0,135,0)">return</span> connection
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/clientserver.py:291</span>, in <span class="ansi-cyan-fg">JavaClient._create_new_connection</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">    287</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">_create_new_connection</span>(<span style="color:rgb(0,135,0)">self</span>):
-<span class="ansi-green-fg">    288</span>     connection = ClientServerConnection(
-<span class="ansi-green-fg">    289</span>         <span style="color:rgb(0,135,0)">self</span>.java_parameters, <span style="color:rgb(0,135,0)">self</span>.python_parameters,
-<span class="ansi-green-fg">    290</span>         <span style="color:rgb(0,135,0)">self</span>.gateway_property, <span style="color:rgb(0,135,0)">self</span>)
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">291</span>     <span class="ansi-yellow-bg">connection</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">connect_to_java_server</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    292</span>     <span style="color:rgb(0,135,0)">self</span>.set_thread_connection(connection)
-<span class="ansi-green-fg">    293</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> connection
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/clientserver.py:438</span>, in <span class="ansi-cyan-fg">ClientServerConnection.connect_to_java_server</span><span class="ansi-blue-fg">(self)</span>
-<span class="ansi-green-fg">    435</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">self</span>.ssl_context:
-<span class="ansi-green-fg">    436</span>     <span style="color:rgb(0,135,0)">self</span>.socket = <span style="color:rgb(0,135,0)">self</span>.ssl_context.wrap_socket(
-<span class="ansi-green-fg">    437</span>         <span style="color:rgb(0,135,0)">self</span>.socket, server_hostname=<span style="color:rgb(0,135,0)">self</span>.java_address)
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">438</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">socket</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">connect</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">java_address</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">java_port</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">    439</span> <span style="color:rgb(0,135,0)">self</span>.stream = <span style="color:rgb(0,135,0)">self</span>.socket.makefile(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">rb</span><span class="ansi-yellow-fg">"</span>)
-<span class="ansi-green-fg">    440</span> <span style="color:rgb(0,135,0)">self</span>.is_connected = <span style="font-weight:bold;color:rgb(0,135,0)">True</span>
-
-<span class="ansi-red-fg">ConnectionRefusedError</span>: [Errno 111] Connection refused</pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> [</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TITLE_RAW"</span>, <span class="st">"TITLE_NAME"</span>, <span class="st">"TITLE_CLEAN"</span>, <span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>, <span class="st">"ONET_NAME"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SKILLS_NAME"</span>, <span class="st">"COMMON_SKILLS_NAME"</span>, <span class="st">"SPECIALIZED_SKILLS_NAME"</span>, <span class="st">"SOFTWARE_SKILLS_NAME"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MIN_EDULEVELS_NAME"</span>, <span class="st">"MAX_EDULEVELS_NAME"</span>, <span class="st">"EDUCATION_LEVELS_NAME"</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MIN_YEARS_EXPERIENCE"</span>, <span class="st">"MAX_YEARS_EXPERIENCE"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"REMOTE_TYPE_NAME"</span>, <span class="st">"LOCATION"</span>, <span class="st">"CITY_NAME"</span>, <span class="st">"STATE_NAME"</span>,</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY_FROM"</span>, <span class="st">"SALARY_TO"</span>, <span class="st">"ORIGINAL_PAY_PERIOD"</span>,</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2_NAME"</span>, <span class="st">"NAICS3_NAME"</span>, <span class="st">"NAICS4_NAME"</span>, <span class="st">"LIGHTCAST_SECTORS_NAME"</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMPANY_NAME"</span>, <span class="st">"COMPANY_IS_STAFFING"</span>,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    <span class="st">"POSTED"</span>, <span class="st">"EXPIRED"</span>, <span class="st">"MODELED_DURATION"</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>df_selected <span class="op">=</span> df.select(<span class="op">*</span>selected_columns)</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div id="4ba2f76f" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col, <span class="bu">sum</span>, when</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>missing_stats <span class="op">=</span> df_selected.select([</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span>(when(col(c).isNull(), <span class="dv">1</span>).otherwise(<span class="dv">0</span>)).alias(c) <span class="cf">for</span> c <span class="kw">in</span> df_selected.columns</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>missing_stats.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 4:&gt;                                                          (0 + 1) / 1]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>+---------+----------+-----------+----------------------------------+---------+-----------+------------------+-----------------------+--------------------+------------------+------------------+---------------------+--------------------+--------------------+----------------+--------+---------+----------+-----------+---------+-------------------+-----------+-----------+-----------+----------------------+------------+-------------------+------+-------+----------------+
+|TITLE_RAW|TITLE_NAME|TITLE_CLEAN|LOT_V6_SPECIALIZED_OCCUPATION_NAME|ONET_NAME|SKILLS_NAME|COMMON_SKILLS_NAME|SPECIALIZED_SKILLS_NAME|SOFTWARE_SKILLS_NAME|MIN_EDULEVELS_NAME|MAX_EDULEVELS_NAME|EDUCATION_LEVELS_NAME|MIN_YEARS_EXPERIENCE|MAX_YEARS_EXPERIENCE|REMOTE_TYPE_NAME|LOCATION|CITY_NAME|STATE_NAME|SALARY_FROM|SALARY_TO|ORIGINAL_PAY_PERIOD|NAICS2_NAME|NAICS3_NAME|NAICS4_NAME|LIGHTCAST_SECTORS_NAME|COMPANY_NAME|COMPANY_IS_STAFFING|POSTED|EXPIRED|MODELED_DURATION|
++---------+----------+-----------+----------------------------------+---------+-----------+------------------+-----------------------+--------------------+------------------+------------------+---------------------+--------------------+--------------------+----------------+--------+---------+----------+-----------+---------+-------------------+-----------+-----------+-----------+----------------------+------------+-------------------+------+-------+----------------+
+|      104|        44|        140|                                44|       44|         44|                44|                     44|                  44|                44|             56183|                   44|               23146|               64068|              44|      44|       44|        44|      40100|    40100|              40100|         44|         44|         44|                 54711|          44|                 44|    22|   7844|           19290|
++---------+----------+-----------+----------------------------------+---------+-----------+------------------+-----------------------+--------------------+------------------+------------------+---------------------+--------------------+--------------------+----------------+--------+---------+----------+-----------+---------+-------------------+-----------+-----------+-----------+----------------------+------------+-------------------+------+-------+----------------+
+</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>ERROR   Thread(Thread-4) root:java_gateway.py:send_command()- Exception while sending command.
- Traceback (most recent call last):
-   File "/home/ubuntu/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 516, in send_command
-    raise Py4JNetworkError("Answer from Java side is empty")
- py4j.protocol.Py4JNetworkError: Answer from Java side is empty
- 
-During handling of the above exception, another exception occurred:
-
- Traceback (most recent call last):
-   File "/home/ubuntu/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/java_gateway.py", line 1038, in send_command
-    response = connection.send_command(command)
-               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   File "/home/ubuntu/AD688-GROUP3-JOB-MARKET-ANALYSIS/.venv/lib/python3.12/site-packages/py4j/clientserver.py", line 539, in send_command
-    raise Py4JNetworkError(
- py4j.protocol.Py4JNetworkError: Error while sending or receiving
-</code></pre>
+<pre><code>                                                                                </code></pre>
+</div>
+</div>
+<div id="819ff5a9" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col, <span class="bu">sum</span>, when</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>total_count <span class="op">=</span> df.count()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>missing_counts <span class="op">=</span> df.select([</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    (<span class="bu">sum</span>(when(col(c).isNull(), <span class="dv">1</span>).otherwise(<span class="dv">0</span>)) <span class="op">/</span> total_count).alias(c) <span class="cf">for</span> c <span class="kw">in</span> df.columns</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>]).collect()[<span class="dv">0</span>].asDict()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>cols_to_keep <span class="op">=</span> [k <span class="cf">for</span> k,v <span class="kw">in</span> missing_counts.items() <span class="cf">if</span> v <span class="op">&lt;=</span> <span class="fl">0.5</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>df_clean <span class="op">=</span> df.select(cols_to_keep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>                                                                                </code></pre>
+</div>
+</div>
+<div id="39ee2182" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col, <span class="bu">sum</span>, when</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>total_count <span class="op">=</span> df_clean.count() </span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>missing_counts <span class="op">=</span> df_clean.select([</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">sum</span>(when(col(c).isNull(), <span class="dv">1</span>).otherwise(<span class="dv">0</span>)).alias(c) <span class="cf">for</span> c <span class="kw">in</span> df_clean.columns</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>]).collect()[<span class="dv">0</span>].asDict()</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col_name, miss_num <span class="kw">in</span> missing_counts.items():</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>col_name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>miss_num<span class="sc">}</span><span class="ss"> missing values"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>[Stage 19:&gt;                                                         (0 + 1) / 1]</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>LAST_UPDATED_DATE: 22 missing values
+POSTED: 22 missing values
+EXPIRED: 7844 missing values
+DURATION: 27316 missing values
+SOURCE_TYPES: 22 missing values
+SOURCES: 22 missing values
+TITLE_RAW: 104 missing values
+BODY: 44 missing values
+MODELED_EXPIRED: 15416 missing values
+MODELED_DURATION: 19290 missing values
+COMPANY: 44 missing values
+COMPANY_NAME: 44 missing values
+COMPANY_RAW: 541 missing values
+COMPANY_IS_STAFFING: 44 missing values
+EDUCATION_LEVELS: 44 missing values
+EDUCATION_LEVELS_NAME: 44 missing values
+MIN_EDULEVELS: 44 missing values
+MIN_EDULEVELS_NAME: 44 missing values
+EMPLOYMENT_TYPE: 44 missing values
+EMPLOYMENT_TYPE_NAME: 44 missing values
+MIN_YEARS_EXPERIENCE: 23146 missing values
+IS_INTERNSHIP: 44 missing values
+REMOTE_TYPE: 44 missing values
+REMOTE_TYPE_NAME: 44 missing values
+LOCATION: 44 missing values
+CITY: 44 missing values
+CITY_NAME: 44 missing values
+COUNTY: 44 missing values
+COUNTY_NAME: 44 missing values
+MSA: 3949 missing values
+MSA_NAME: 3949 missing values
+STATE: 44 missing values
+STATE_NAME: 44 missing values
+COUNTY_OUTGOING: 44 missing values
+COUNTY_NAME_OUTGOING: 44 missing values
+COUNTY_INCOMING: 44 missing values
+COUNTY_NAME_INCOMING: 44 missing values
+MSA_OUTGOING: 3949 missing values
+MSA_NAME_OUTGOING: 3949 missing values
+MSA_INCOMING: 3962 missing values
+MSA_NAME_INCOMING: 3962 missing values
+NAICS2_NAME: 44 missing values
+NAICS3_NAME: 44 missing values
+NAICS4_NAME: 44 missing values
+NAICS5_NAME: 44 missing values
+NAICS6_NAME: 44 missing values
+TITLE: 44 missing values
+TITLE_NAME: 44 missing values
+TITLE_CLEAN: 140 missing values
+SKILLS: 44 missing values
+SKILLS_NAME: 44 missing values
+SPECIALIZED_SKILLS: 44 missing values
+SPECIALIZED_SKILLS_NAME: 44 missing values
+CERTIFICATIONS: 44 missing values
+CERTIFICATIONS_NAME: 44 missing values
+COMMON_SKILLS: 44 missing values
+COMMON_SKILLS_NAME: 44 missing values
+SOFTWARE_SKILLS: 44 missing values
+SOFTWARE_SKILLS_NAME: 44 missing values
+ONET: 44 missing values
+ONET_NAME: 44 missing values
+ONET_2019: 44 missing values
+ONET_2019_NAME: 44 missing values
+CIP6: 44 missing values
+CIP6_NAME: 44 missing values
+CIP4: 44 missing values
+CIP4_NAME: 44 missing values
+CIP2: 44 missing values
+CIP2_NAME: 44 missing values
+SOC_2021_2: 44 missing values
+SOC_2021_2_NAME: 44 missing values
+SOC_2021_3: 44 missing values
+SOC_2021_3_NAME: 44 missing values
+SOC_2021_4: 44 missing values
+SOC_2021_4_NAME: 44 missing values
+SOC_2021_5: 44 missing values
+SOC_2021_5_NAME: 44 missing values
+LOT_CAREER_AREA: 44 missing values
+LOT_CAREER_AREA_NAME: 44 missing values
+LOT_OCCUPATION: 44 missing values
+LOT_OCCUPATION_NAME: 44 missing values
+LOT_SPECIALIZED_OCCUPATION: 44 missing values
+LOT_SPECIALIZED_OCCUPATION_NAME: 44 missing values
+LOT_OCCUPATION_GROUP: 44 missing values
+LOT_OCCUPATION_GROUP_NAME: 44 missing values
+LOT_V6_SPECIALIZED_OCCUPATION: 44 missing values
+LOT_V6_SPECIALIZED_OCCUPATION_NAME: 44 missing values
+LOT_V6_OCCUPATION: 44 missing values
+LOT_V6_OCCUPATION_NAME: 44 missing values
+LOT_V6_OCCUPATION_GROUP: 44 missing values
+LOT_V6_OCCUPATION_GROUP_NAME: 44 missing values
+LOT_V6_CAREER_AREA: 44 missing values
+LOT_V6_CAREER_AREA_NAME: 44 missing values
+SOC_2_NAME: 44 missing values
+SOC_3_NAME: 44 missing values
+SOC_4: 44 missing values
+SOC_4_NAME: 44 missing values
+SOC_5_NAME: 44 missing values
+NAICS_2022_2: 44 missing values
+NAICS_2022_2_NAME: 44 missing values
+NAICS_2022_3: 44 missing values
+NAICS_2022_3_NAME: 44 missing values
+NAICS_2022_4: 44 missing values
+NAICS_2022_4_NAME: 44 missing values
+NAICS_2022_5: 44 missing values
+NAICS_2022_5_NAME: 44 missing values
+NAICS_2022_6: 44 missing values
+NAICS_2022_6_NAME: 44 missing values</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>                                                                                </code></pre>
 </div>
 </div>
 
