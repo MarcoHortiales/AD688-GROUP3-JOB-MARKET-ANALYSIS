@@ -356,11 +356,11 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="e8e75209" class="cell" data-execution_count="7">
+<div id="e8e75209" class="cell" data-execution_count="69">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> [</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#job name and type of employment</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TITLE_CLEAN"</span>, <span class="st">"EMPLOYMENT_TYPE_NAME"</span>, <span class="st">"REMOTE_TYPE_NAME"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TITLE_RAW"</span>, <span class="st">"TITLE_NAME"</span>, <span class="st">"TITLE_CLEAN"</span>, <span class="st">"EMPLOYMENT_TYPE_NAME"</span>, <span class="st">"REMOTE_TYPE_NAME"</span>,</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">#skills and education</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMMON_SKILLS_NAME"</span>, <span class="st">"SPECIALIZED_SKILLS_NAME"</span>, <span class="st">"SOFTWARE_SKILLS_NAME"</span>,</span>
@@ -373,24 +373,105 @@ only showing top 5 rows
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOCATION"</span>, <span class="st">"STATE"</span>, <span class="st">"STATE_NAME"</span>, <span class="st">"CITY_NAME"</span>, <span class="st">"COUNTY_NAME"</span>,</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Salary and pay period</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY_FROM"</span>, <span class="st">"SALARY_TO"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY"</span>, <span class="st">"SALARY_FROM"</span>, <span class="st">"SALARY_TO"</span>,</span>
 <span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Industry and company information</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOT_SPECIALIZED_OCCUPATION_NAME"</span>, <span class="st">"NAICS3_NAME"</span>,</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMPANY_RAW"</span>, </span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOT_V6_OCCUPATION_NAME"</span>, <span class="st">"LOT_V6_OCCUPATION_GROUP_NAME"</span>, <span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMPANY_RAW"</span>,</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>df_selected <span class="op">=</span> df.select(<span class="op">*</span>selected_columns)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>df_selected.pd <span class="op">=</span> df_selected.toPandas()</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>df_selected <span class="op">=</span> df.select(<span class="op">*</span>selected_columns)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>df_selected.pd <span class="op">=</span> df_selected.toPandas()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
+</div>
+</div>
+<div id="ea18d9be" class="cell" data-execution_count="70">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="70">
+<pre><code>TITLE_RAW                               104
+TITLE_NAME                               44
+TITLE_CLEAN                             140
+EMPLOYMENT_TYPE_NAME                     44
+REMOTE_TYPE_NAME                         44
+COMMON_SKILLS_NAME                       44
+SPECIALIZED_SKILLS_NAME                  44
+SOFTWARE_SKILLS_NAME                     44
+MIN_EDULEVELS_NAME                       44
+MAX_EDULEVELS_NAME                    56183
+EDUCATION_LEVELS_NAME                    44
+MIN_YEARS_EXPERIENCE                  23146
+MAX_YEARS_EXPERIENCE                  64068
+LOCATION                                 44
+STATE                                    44
+STATE_NAME                               44
+CITY_NAME                                44
+COUNTY_NAME                              44
+SALARY                                41690
+SALARY_FROM                           40100
+SALARY_TO                             40100
+LOT_V6_OCCUPATION_NAME                   44
+LOT_V6_OCCUPATION_GROUP_NAME             44
+LOT_V6_SPECIALIZED_OCCUPATION_NAME       44
+COMPANY_RAW                             541
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="54f2439a" class="cell" data-execution_count="71">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="71">
+<pre><code>(72498, 25)</code></pre>
+</div>
+</div>
+<div id="acc9ccba" class="cell" data-execution_count="76">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd[<span class="st">'TITLE_CLEAN'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="76">
+<pre><code>array(['enterprise analyst ii iii', 'oracle consultant reports',
+       'data analyst', ...,
+       'senior business intelligence analyst strategic performance analytics',
+       'finance entry level bachelors required max w',
+       'oracle fusion analytics warehouse faw hcm lead'], dtype=object)</code></pre>
+</div>
+</div>
+<div id="a2e9674c" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df_selected.pd[df_selected.pd[<span class="st">'SALARY'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="f91cb281" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_salary.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>TITLE_CLEAN                           56
+EMPLOYMENT_TYPE_NAME                   0
+REMOTE_TYPE_NAME                       0
+COMMON_SKILLS_NAME                     0
+SPECIALIZED_SKILLS_NAME                0
+SOFTWARE_SKILLS_NAME                   0
+MIN_EDULEVELS_NAME                     0
+MAX_EDULEVELS_NAME                 22098
+EDUCATION_LEVELS_NAME                  0
+MIN_YEARS_EXPERIENCE                7111
+MAX_YEARS_EXPERIENCE               27052
+LOCATION                               0
+STATE                                  0
+STATE_NAME                             0
+CITY_NAME                              0
+COUNTY_NAME                            0
+SALARY                                 0
+SALARY_FROM                            0
+SALARY_TO                              0
+LOT_SPECIALIZED_OCCUPATION_NAME        0
+NAICS3_NAME                            0
+COMPANY_RAW                          227
+dtype: int64</code></pre>
+</div>
+</div>
+<div id="af40cf90" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_salary.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>(30808, 22)</code></pre>
 </div>
 </div>
 
