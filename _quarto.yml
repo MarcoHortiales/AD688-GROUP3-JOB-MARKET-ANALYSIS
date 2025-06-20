@@ -6,9 +6,11 @@ website:
   navbar:
     left:
       - href: index.qmd
-        text: Home
+        text: Introduction
       - href: data_analysis.ipynb
         text: Data Analysis
+      - href: Key findings with analysis.qmd
+        text: Key findings with analysis
 format:
   html:
     theme:
