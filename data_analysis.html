@@ -152,7 +152,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#plot-3-extract-the-top-10-skills-by-category" id="toc-plot-3-extract-the-top-10-skills-by-category" class="nav-link active" data-scroll-target="#plot-3-extract-the-top-10-skills-by-category"><span class="header-section-number">1</span> Plot 3 Extract the top 10 skills by category</a></li>
+  <li><a href="#plot-2-geographic-distribution-of-salary-and-job-demand" id="toc-plot-2-geographic-distribution-of-salary-and-job-demand" class="nav-link active" data-scroll-target="#plot-2-geographic-distribution-of-salary-and-job-demand"><span class="header-section-number">1</span> Plot 2 Geographic distribution of salary and job demand</a></li>
+  <li><a href="#plot-3-extract-the-top-10-skills-by-category" id="toc-plot-3-extract-the-top-10-skills-by-category" class="nav-link" data-scroll-target="#plot-3-extract-the-top-10-skills-by-category"><span class="header-section-number">2</span> Plot 3 Extract the top 10 skills by category</a></li>
   </ul>
 </nav>
     </div>
@@ -178,7 +179,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="bed9e175" class="cell" data-execution_count="1">
+<div id="bed9e175" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -201,10 +202,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>df.printSchema() <span class="co"># comment this line when rendering the submission</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>df.show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Setting default log level to "WARN".
-To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/06/20 17:53:56 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
-                                                                                </code></pre>
+<pre><code>                                                                                </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>---This is Diagnostic check, No need to print it in the final doc---
@@ -340,14 +338,8 @@ root
  |-- NAICS_2022_5_NAME: string (nullable = true)
  |-- NAICS_2022_6: integer (nullable = true)
  |-- NAICS_2022_6_NAME: string (nullable = true)
-</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>25/06/20 17:54:22 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
-                                                                                </code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>+--------------------+-----------------+----------------------+----------+--------+---------+--------+--------------------+--------------------+--------------------+-----------+-------------------+--------------------+--------------------+---------------+----------------+--------+--------------------+-----------+-------------------+----------------+---------------------+-------------+-------------------+-------------+------------------+---------------+--------------------+--------------------+--------------------+-------------+------+-----------+----------------+-------------------+---------+-----------+--------------------+--------------------+-------------+------+--------------+-----+--------------------+-----+----------+---------------+--------------------+---------------+--------------------+------------+--------------------+------------+--------------------+------+--------------------+------+--------------------+------+--------------------+------+--------------------+------+--------------------+------------------+-------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+----------+---------------+----------+---------------+---------------+--------------------+--------------+--------------------+--------------------------+-------------------------------+--------------------+-------------------------+-----------------------------+----------------------------------+-----------------+----------------------+-----------------------+----------------------------+------------------+-----------------------+-------+--------------------+-------+--------------------+-------+---------------+-------+---------------+-----------------+----------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+
+
++--------------------+-----------------+----------------------+----------+--------+---------+--------+--------------------+--------------------+--------------------+-----------+-------------------+--------------------+--------------------+---------------+----------------+--------+--------------------+-----------+-------------------+----------------+---------------------+-------------+-------------------+-------------+------------------+---------------+--------------------+--------------------+--------------------+-------------+------+-----------+----------------+-------------------+---------+-----------+--------------------+--------------------+-------------+------+--------------+-----+--------------------+-----+----------+---------------+--------------------+---------------+--------------------+------------+--------------------+------------+--------------------+------+--------------------+------+--------------------+------+--------------------+------+--------------------+------+--------------------+------------------+-------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+----------+---------------+----------+---------------+---------------+--------------------+--------------+--------------------+--------------------------+-------------------------------+--------------------+-------------------------+-----------------------------+----------------------------------+-----------------+----------------------+-----------------------+----------------------------+------------------+-----------------------+-------+--------------------+-------+--------------------+-------+---------------+-------+---------------+-----------------+----------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+
 |                  ID|LAST_UPDATED_DATE|LAST_UPDATED_TIMESTAMP|DUPLICATES|  POSTED|  EXPIRED|DURATION|        SOURCE_TYPES|             SOURCES|                 URL|ACTIVE_URLS|ACTIVE_SOURCES_INFO|           TITLE_RAW|                BODY|MODELED_EXPIRED|MODELED_DURATION| COMPANY|        COMPANY_NAME|COMPANY_RAW|COMPANY_IS_STAFFING|EDUCATION_LEVELS|EDUCATION_LEVELS_NAME|MIN_EDULEVELS| MIN_EDULEVELS_NAME|MAX_EDULEVELS|MAX_EDULEVELS_NAME|EMPLOYMENT_TYPE|EMPLOYMENT_TYPE_NAME|MIN_YEARS_EXPERIENCE|MAX_YEARS_EXPERIENCE|IS_INTERNSHIP|SALARY|REMOTE_TYPE|REMOTE_TYPE_NAME|ORIGINAL_PAY_PERIOD|SALARY_TO|SALARY_FROM|            LOCATION|                CITY|    CITY_NAME|COUNTY|   COUNTY_NAME|  MSA|            MSA_NAME|STATE|STATE_NAME|COUNTY_OUTGOING|COUNTY_NAME_OUTGOING|COUNTY_INCOMING|COUNTY_NAME_INCOMING|MSA_OUTGOING|   MSA_NAME_OUTGOING|MSA_INCOMING|   MSA_NAME_INCOMING|NAICS2|         NAICS2_NAME|NAICS3|         NAICS3_NAME|NAICS4|         NAICS4_NAME|NAICS5|         NAICS5_NAME|NAICS6|         NAICS6_NAME|             TITLE|         TITLE_NAME|         TITLE_CLEAN|              SKILLS|         SKILLS_NAME|  SPECIALIZED_SKILLS|SPECIALIZED_SKILLS_NAME|      CERTIFICATIONS| CERTIFICATIONS_NAME|       COMMON_SKILLS|  COMMON_SKILLS_NAME|     SOFTWARE_SKILLS|SOFTWARE_SKILLS_NAME|      ONET|           ONET_NAME| ONET_2019|      ONET_2019_NAME|                CIP6|           CIP6_NAME|                CIP4|           CIP4_NAME|                CIP2|           CIP2_NAME|SOC_2021_2|     SOC_2021_2_NAME|SOC_2021_3|     SOC_2021_3_NAME|SOC_2021_4|SOC_2021_4_NAME|SOC_2021_5|SOC_2021_5_NAME|LOT_CAREER_AREA|LOT_CAREER_AREA_NAME|LOT_OCCUPATION| LOT_OCCUPATION_NAME|LOT_SPECIALIZED_OCCUPATION|LOT_SPECIALIZED_OCCUPATION_NAME|LOT_OCCUPATION_GROUP|LOT_OCCUPATION_GROUP_NAME|LOT_V6_SPECIALIZED_OCCUPATION|LOT_V6_SPECIALIZED_OCCUPATION_NAME|LOT_V6_OCCUPATION|LOT_V6_OCCUPATION_NAME|LOT_V6_OCCUPATION_GROUP|LOT_V6_OCCUPATION_GROUP_NAME|LOT_V6_CAREER_AREA|LOT_V6_CAREER_AREA_NAME|  SOC_2|          SOC_2_NAME|  SOC_3|          SOC_3_NAME|  SOC_4|     SOC_4_NAME|  SOC_5|     SOC_5_NAME|LIGHTCAST_SECTORS|LIGHTCAST_SECTORS_NAME|NAICS_2022_2|   NAICS_2022_2_NAME|NAICS_2022_3|   NAICS_2022_3_NAME|NAICS_2022_4|   NAICS_2022_4_NAME|NAICS_2022_5|   NAICS_2022_5_NAME|NAICS_2022_6|   NAICS_2022_6_NAME|
 +--------------------+-----------------+----------------------+----------+--------+---------+--------+--------------------+--------------------+--------------------+-----------+-------------------+--------------------+--------------------+---------------+----------------+--------+--------------------+-----------+-------------------+----------------+---------------------+-------------+-------------------+-------------+------------------+---------------+--------------------+--------------------+--------------------+-------------+------+-----------+----------------+-------------------+---------+-----------+--------------------+--------------------+-------------+------+--------------+-----+--------------------+-----+----------+---------------+--------------------+---------------+--------------------+------------+--------------------+------------+--------------------+------+--------------------+------+--------------------+------+--------------------+------+--------------------+------+--------------------+------------------+-------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+----------+---------------+----------+---------------+---------------+--------------------+--------------+--------------------+--------------------------+-------------------------------+--------------------+-------------------------+-----------------------------+----------------------------------+-----------------+----------------------+-----------------------+----------------------------+------------------+-----------------------+-------+--------------------+-------+--------------------+-------+---------------+-------+---------------+-----------------+----------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+
 |1f57d95acf4dc67ed...|         9/6/2024|  2024-09-06 20:32:...|         0|6/2/2024| 6/8/2024|       6|   [\n  "Company"\n]|[\n  "brassring.c...|[\n  "https://sjo...|         []|               NULL|Enterprise Analys...|31-May-2024\n\nEn...|       6/8/2024|               6|  894731|          Murphy USA| Murphy USA|              false|       [\n  2\n]| [\n  "Bachelor's ...|            2|  Bachelor's degree|         NULL|              NULL|              1|Full-time (&gt; 32 h...|                   2|                   2|        false|  NULL|          0|          [None]|               NULL|     NULL|       NULL|{\n  "lat": 33.20...|RWwgRG9yYWRvLCBBUg==|El Dorado, AR|  5139|     Union, AR|20980|       El Dorado, AR|    5|  Arkansas|           5139|           Union, AR|           5139|           Union, AR|       20980|       El Dorado, AR|       20980|       El Dorado, AR|    44|        Retail Trade|   441|Motor Vehicle and...|  4413|Automotive Parts,...| 44133|Automotive Parts ...|441330|Automotive Parts ...|ET29C073C03D1F86B4|Enterprise Analysts|enterprise analys...|[\n  "KS126DB6T06...|[\n  "Merchandisi...|[\n  "KS126DB6T06...|   [\n  "Merchandisi...|                  []|                  []|[\n  "KS126706DPF...|[\n  "Mathematics...|[\n  "KS440W865GC...|[\n  "SQL (Progra...|15-2051.01|Business Intellig...|15-2051.01|Business Intellig...|[\n  "45.0601",\n...|[\n  "Economics, ...|[\n  "45.06",\n  ...|[\n  "Economics",...|[\n  "45",\n  "27...|[\n  "Social Scie...|   15-0000|Computer and Math...|   15-2000|Mathematical Scie...|   15-2050|Data Scientists|   15-2051|Data Scientists|             23|Information Techn...|        231010|Business Intellig...|                  23101011|           General ERP Analy...|                2310|     Business Intellig...|                     23101011|              General ERP Analy...|           231010|  Business Intellig...|                   2310|        Business Intellig...|                23|   Information Techn...|15-0000|Computer and Math...|15-2000|Mathematical Scie...|15-2050|Data Scientists|15-2051|Data Scientists|        [\n  7\n]|  [\n  "Artificial ...|          44|        Retail Trade|         441|Motor Vehicle and...|        4413|Automotive Parts,...|       44133|Automotive Parts ...|      441330|Automotive Parts ...|
@@ -360,17 +352,14 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="8335e474" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="op">*</span>columns_to_drop)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>df.show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>                                                                                </code></pre>
-</div>
+<div id="8335e474" class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SOC_2"</span>, <span class="st">"SOC_3"</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="op">*</span>columns_to_drop)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>df.show(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>+-----------------+--------+---------+--------+--------------------+--------------------+-------------------+--------------------+--------------------+---------------+----------------+--------+--------------------+-----------+-------------------+----------------+---------------------+-------------+-------------------+-------------+------------------+---------------+--------------------+--------------------+--------------------+-------------+------+-----------+----------------+-------------------+---------+-----------+--------------------+--------------------+-------------+------+--------------+-----+--------------------+-----+----------+---------------+--------------------+---------------+--------------------+------------+--------------------+------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+------------------+-------------------+--------------------+--------------------+--------------------+--------------------+-----------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+--------------------+----------+--------------------+----------+--------------------+----------+---------------+----------+---------------+---------------+--------------------+--------------+--------------------+--------------------------+-------------------------------+--------------------+-------------------------+-----------------------------+----------------------------------+-----------------+----------------------+-----------------------+----------------------------+------------------+-----------------------+--------------------+--------------------+-------+---------------+-------+---------------+-----------------+----------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+------------+--------------------+
 |LAST_UPDATED_DATE|  POSTED|  EXPIRED|DURATION|        SOURCE_TYPES|             SOURCES|ACTIVE_SOURCES_INFO|           TITLE_RAW|                BODY|MODELED_EXPIRED|MODELED_DURATION| COMPANY|        COMPANY_NAME|COMPANY_RAW|COMPANY_IS_STAFFING|EDUCATION_LEVELS|EDUCATION_LEVELS_NAME|MIN_EDULEVELS| MIN_EDULEVELS_NAME|MAX_EDULEVELS|MAX_EDULEVELS_NAME|EMPLOYMENT_TYPE|EMPLOYMENT_TYPE_NAME|MIN_YEARS_EXPERIENCE|MAX_YEARS_EXPERIENCE|IS_INTERNSHIP|SALARY|REMOTE_TYPE|REMOTE_TYPE_NAME|ORIGINAL_PAY_PERIOD|SALARY_TO|SALARY_FROM|            LOCATION|                CITY|    CITY_NAME|COUNTY|   COUNTY_NAME|  MSA|            MSA_NAME|STATE|STATE_NAME|COUNTY_OUTGOING|COUNTY_NAME_OUTGOING|COUNTY_INCOMING|COUNTY_NAME_INCOMING|MSA_OUTGOING|   MSA_NAME_OUTGOING|MSA_INCOMING|   MSA_NAME_INCOMING|         NAICS2_NAME|         NAICS3_NAME|         NAICS4_NAME|         NAICS5_NAME|         NAICS6_NAME|             TITLE|         TITLE_NAME|         TITLE_CLEAN|              SKILLS|         SKILLS_NAME|  SPECIALIZED_SKILLS|SPECIALIZED_SKILLS_NAME|      CERTIFICATIONS| CERTIFICATIONS_NAME|       COMMON_SKILLS|  COMMON_SKILLS_NAME|     SOFTWARE_SKILLS|SOFTWARE_SKILLS_NAME|      ONET|           ONET_NAME| ONET_2019|      ONET_2019_NAME|                CIP6|           CIP6_NAME|                CIP4|           CIP4_NAME|                CIP2|           CIP2_NAME|SOC_2021_2|     SOC_2021_2_NAME|SOC_2021_3|     SOC_2021_3_NAME|SOC_2021_4|SOC_2021_4_NAME|SOC_2021_5|SOC_2021_5_NAME|LOT_CAREER_AREA|LOT_CAREER_AREA_NAME|LOT_OCCUPATION| LOT_OCCUPATION_NAME|LOT_SPECIALIZED_OCCUPATION|LOT_SPECIALIZED_OCCUPATION_NAME|LOT_OCCUPATION_GROUP|LOT_OCCUPATION_GROUP_NAME|LOT_V6_SPECIALIZED_OCCUPATION|LOT_V6_SPECIALIZED_OCCUPATION_NAME|LOT_V6_OCCUPATION|LOT_V6_OCCUPATION_NAME|LOT_V6_OCCUPATION_GROUP|LOT_V6_OCCUPATION_GROUP_NAME|LOT_V6_CAREER_AREA|LOT_V6_CAREER_AREA_NAME|          SOC_2_NAME|          SOC_3_NAME|  SOC_4|     SOC_4_NAME|  SOC_5|     SOC_5_NAME|LIGHTCAST_SECTORS|LIGHTCAST_SECTORS_NAME|NAICS_2022_2|   NAICS_2022_2_NAME|NAICS_2022_3|   NAICS_2022_3_NAME|NAICS_2022_4|   NAICS_2022_4_NAME|NAICS_2022_5|   NAICS_2022_5_NAME|NAICS_2022_6|   NAICS_2022_6_NAME|
@@ -385,43 +374,43 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="e8e75209" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> [</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#job name and type of employment</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TITLE_RAW"</span>, <span class="st">"TITLE_NAME"</span>, <span class="st">"TITLE_CLEAN"</span>, <span class="st">"EMPLOYMENT_TYPE_NAME"</span>, <span class="st">"REMOTE_TYPE_NAME"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#skills and education</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMMON_SKILLS_NAME"</span>, <span class="st">"SPECIALIZED_SKILLS_NAME"</span>, <span class="st">"SOFTWARE_SKILLS_NAME"</span>,</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MIN_EDULEVELS_NAME"</span>, <span class="st">"MAX_EDULEVELS_NAME"</span>, <span class="st">"EDUCATION_LEVELS_NAME"</span>,</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#experience and location</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MIN_YEARS_EXPERIENCE"</span>, <span class="st">"MAX_YEARS_EXPERIENCE"</span>,</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOCATION"</span>, <span class="st">"STATE"</span>, <span class="st">"STATE_NAME"</span>, <span class="st">"CITY_NAME"</span>, <span class="st">"COUNTY_NAME"</span>,</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Salary and pay period</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY"</span>, <span class="st">"SALARY_FROM"</span>, <span class="st">"SALARY_TO"</span>,</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Industry and company information</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOT_V6_OCCUPATION_NAME"</span>, <span class="st">"LOT_V6_OCCUPATION_GROUP_NAME"</span>, <span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>,</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMPANY_RAW"</span>,</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>df_selected <span class="op">=</span> df.select(<span class="op">*</span>selected_columns)</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>df_selected.pd <span class="op">=</span> df_selected.toPandas()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="e8e75209" class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> [</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#job name and type of employment</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"TITLE_RAW"</span>, <span class="st">"TITLE_NAME"</span>, <span class="st">"TITLE_CLEAN"</span>, <span class="st">"EMPLOYMENT_TYPE_NAME"</span>, <span class="st">"REMOTE_TYPE_NAME"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#skills and education</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMMON_SKILLS_NAME"</span>, <span class="st">"SPECIALIZED_SKILLS_NAME"</span>, <span class="st">"SOFTWARE_SKILLS_NAME"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MIN_EDULEVELS_NAME"</span>, <span class="st">"MAX_EDULEVELS_NAME"</span>, <span class="st">"EDUCATION_LEVELS_NAME"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#experience and location</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"MIN_YEARS_EXPERIENCE"</span>, <span class="st">"MAX_YEARS_EXPERIENCE"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOCATION"</span>, <span class="st">"STATE"</span>, <span class="st">"STATE_NAME"</span>, <span class="st">"CITY_NAME"</span>, <span class="st">"COUNTY_NAME"</span>,</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Salary and pay period</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"SALARY"</span>, <span class="st">"SALARY_FROM"</span>, <span class="st">"SALARY_TO"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Industry and company information</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">"LOT_V6_OCCUPATION_NAME"</span>, <span class="st">"LOT_V6_OCCUPATION_GROUP_NAME"</span>, <span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"COMPANY_RAW"</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>df_selected <span class="op">=</span> df.select(<span class="op">*</span>selected_columns)</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>df_selected <span class="op">=</span> df_selected.toPandas()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>                                                                                </code></pre>
 </div>
 </div>
-<div id="ea18d9be" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div id="ea18d9be" class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df_selected.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
 <pre><code>TITLE_RAW                               104
 TITLE_NAME                               44
 TITLE_CLEAN                             140
@@ -450,15 +439,15 @@ COMPANY_RAW                             541
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="54f2439a" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="54f2439a" class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_selected.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="51">
 <pre><code>(72498, 25)</code></pre>
 </div>
 </div>
-<div id="acc9ccba" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div id="acc9ccba" class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="52">
 <pre><code>array(['General ERP Analyst / Consultant', 'Oracle Consultant / Analyst',
        'Data Analyst', 'Enterprise Architect',
        'Business Analyst (General)', 'SAP Analyst / Admin',
@@ -467,12 +456,12 @@ dtype: int64</code></pre>
        'Marketing Analyst'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="a2e9674c" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df_selected.pd[df_selected.pd[<span class="st">'SALARY'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="a2e9674c" class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df_selected[df_selected[<span class="st">'SALARY'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f91cb281" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>df_salary.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div id="f91cb281" class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>df_salary.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="55">
 <pre><code>TITLE_RAW                                26
 TITLE_NAME                                0
 TITLE_CLEAN                              56
@@ -501,15 +490,15 @@ COMPANY_RAW                             227
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="af40cf90" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>df_salary.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div id="af40cf90" class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_salary.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="56">
 <pre><code>(30808, 25)</code></pre>
 </div>
 </div>
-<div id="8a1989be" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div id="8a1989be" class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="57">
 <pre><code>LOT_V6_SPECIALIZED_OCCUPATION_NAME
 Data Analyst                        27832
 General ERP Analyst / Consultant     9931
@@ -525,8 +514,8 @@ Marketing Analyst                     153
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="50119109" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_job <span class="op">=</span> df_selected.pd[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>),color <span class="op">=</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="50119109" class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_job <span class="op">=</span> df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>),color <span class="op">=</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -535,9 +524,9 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="4836a79d" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_selected.pd.groupby(<span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>)[<span class="st">"SALARY"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div id="4836a79d" class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>df_selected.groupby(<span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>)[<span class="st">"SALARY"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
 <pre><code>LOT_V6_SPECIALIZED_OCCUPATION_NAME
 Business Analyst (General)          100888.607317
 Business Intelligence Analyst       108886.397778
@@ -553,43 +542,43 @@ SAP Analyst / Admin                 115745.803736
 Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
-<div id="1bdb4653" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>job_counts <span class="op">=</span> df_selected.pd[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts()</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>salary_means <span class="op">=</span> df_selected.pd.groupby(<span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>)[<span class="st">"SALARY"</span>].mean()</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>summary_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Job Count"</span>: job_counts,</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Average Salary"</span>: salary_means</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>}).dropna()</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(summary_df.index))</span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="fl">0.4</span>  </span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>bars1 <span class="op">=</span> ax1.bar(x <span class="op">-</span> width<span class="op">/</span><span class="dv">2</span>, summary_df[<span class="st">"Job Count"</span>], width, color<span class="op">=</span><span class="st">'skyblue'</span>, label<span class="op">=</span><span class="st">'Job Count'</span>)</span>
-<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Job Count"</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'blue'</span>)</span>
-<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(x)</span>
-<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>ax1.set_xticklabels(summary_df.index, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
-<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
-<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>bars2 <span class="op">=</span> ax2.bar(x <span class="op">+</span> width<span class="op">/</span><span class="dv">2</span>, summary_df[<span class="st">"Average Salary"</span>], width, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Average Salary'</span>)</span>
-<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Average Salary"</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
-<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'orange'</span>)</span>
-<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">" Specialized Occupations: Job Count vs. Average Salary (Dual Bar Chart)"</span>)</span>
-<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="1bdb4653" class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>job_counts <span class="op">=</span> df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts()</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>salary_means <span class="op">=</span> df_selected.groupby(<span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>)[<span class="st">"SALARY"</span>].mean()</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>summary_df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Job Count"</span>: job_counts,</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Average Salary"</span>: salary_means</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>}).dropna()</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="bu">len</span>(summary_df.index))</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="fl">0.4</span>  </span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>fig, ax1 <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">20</span>, <span class="dv">10</span>))</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>bars1 <span class="op">=</span> ax1.bar(x <span class="op">-</span> width<span class="op">/</span><span class="dv">2</span>, summary_df[<span class="st">"Job Count"</span>], width, color<span class="op">=</span><span class="st">'skyblue'</span>, label<span class="op">=</span><span class="st">'Job Count'</span>)</span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Job Count"</span>, color<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>ax1.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'blue'</span>)</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>ax1.set_xticks(x)</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>ax1.set_xticklabels(summary_df.index, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>ax2 <span class="op">=</span> ax1.twinx()</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>bars2 <span class="op">=</span> ax2.bar(x <span class="op">+</span> width<span class="op">/</span><span class="dv">2</span>, summary_df[<span class="st">"Average Salary"</span>], width, color<span class="op">=</span><span class="st">'orange'</span>, label<span class="op">=</span><span class="st">'Average Salary'</span>)</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>ax2.set_ylabel(<span class="st">"Average Salary"</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>ax2.tick_params(axis<span class="op">=</span><span class="st">'y'</span>, labelcolor<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">" Specialized Occupations: Job Count vs. Average Salary (Dual Bar Chart)"</span>)</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -598,66 +587,291 @@ Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<section id="plot-3-extract-the-top-10-skills-by-category" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Plot 3 Extract the top 10 skills by category</h1>
-<div id="5496b4fc" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<section id="plot-2-geographic-distribution-of-salary-and-job-demand" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Plot 2 Geographic distribution of salary and job demand</h1>
+<div id="bec51d66" class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FIPS to State Abbreviation Mapping</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>fips_to_state <span class="op">=</span> {</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">"AL"</span>, <span class="dv">2</span>: <span class="st">"AK"</span>, <span class="dv">4</span>: <span class="st">"AZ"</span>, <span class="dv">5</span>: <span class="st">"AR"</span>, <span class="dv">6</span>: <span class="st">"CA"</span>, <span class="dv">8</span>: <span class="st">"CO"</span>, <span class="dv">9</span>: <span class="st">"CT"</span>, <span class="dv">10</span>: <span class="st">"DE"</span>, <span class="dv">11</span>: <span class="st">"DC"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">12</span>: <span class="st">"FL"</span>, <span class="dv">13</span>: <span class="st">"GA"</span>, <span class="dv">15</span>: <span class="st">"HI"</span>, <span class="dv">16</span>: <span class="st">"ID"</span>, <span class="dv">17</span>: <span class="st">"IL"</span>, <span class="dv">18</span>: <span class="st">"IN"</span>, <span class="dv">19</span>: <span class="st">"IA"</span>, <span class="dv">20</span>: <span class="st">"KS"</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="dv">21</span>: <span class="st">"KY"</span>, <span class="dv">22</span>: <span class="st">"LA"</span>, <span class="dv">23</span>: <span class="st">"ME"</span>, <span class="dv">24</span>: <span class="st">"MD"</span>, <span class="dv">25</span>: <span class="st">"MA"</span>, <span class="dv">26</span>: <span class="st">"MI"</span>, <span class="dv">27</span>: <span class="st">"MN"</span>, <span class="dv">28</span>: <span class="st">"MS"</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">29</span>: <span class="st">"MO"</span>, <span class="dv">30</span>: <span class="st">"MT"</span>, <span class="dv">31</span>: <span class="st">"NE"</span>, <span class="dv">32</span>: <span class="st">"NV"</span>, <span class="dv">33</span>: <span class="st">"NH"</span>, <span class="dv">34</span>: <span class="st">"NJ"</span>, <span class="dv">35</span>: <span class="st">"NM"</span>, <span class="dv">36</span>: <span class="st">"NY"</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">37</span>: <span class="st">"NC"</span>, <span class="dv">38</span>: <span class="st">"ND"</span>, <span class="dv">39</span>: <span class="st">"OH"</span>, <span class="dv">40</span>: <span class="st">"OK"</span>, <span class="dv">41</span>: <span class="st">"OR"</span>, <span class="dv">42</span>: <span class="st">"PA"</span>, <span class="dv">44</span>: <span class="st">"RI"</span>, <span class="dv">45</span>: <span class="st">"SC"</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="dv">46</span>: <span class="st">"SD"</span>, <span class="dv">47</span>: <span class="st">"TN"</span>, <span class="dv">48</span>: <span class="st">"TX"</span>, <span class="dv">49</span>: <span class="st">"UT"</span>, <span class="dv">50</span>: <span class="st">"VT"</span>, <span class="dv">51</span>: <span class="st">"VA"</span>, <span class="dv">53</span>: <span class="st">"WA"</span>, <span class="dv">54</span>: <span class="st">"WV"</span>,</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="dv">55</span>: <span class="st">"WI"</span>, <span class="dv">56</span>: <span class="st">"WY"</span></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Map numeric codes to abbreviations</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'STATE'</span>] <span class="op">=</span> df_selected[<span class="st">'STATE'</span>].<span class="bu">map</span>(fips_to_state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="4887e700" class="cell" data-execution_count="79">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> webbrowser</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by state and calculate metrics</span></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>state_data <span class="op">=</span> df_selected.groupby(<span class="st">'STATE'</span>).agg({</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SALARY'</span>: <span class="st">'mean'</span>,</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'TITLE_NAME'</span>: <span class="st">'count'</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>}).reset_index()</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>state_data.columns <span class="op">=</span> [<span class="st">'State'</span>, <span class="st">'Average_Salary'</span>, <span class="st">'Job_Count'</span>]</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>state_data[<span class="st">'Average_Salary'</span>] <span class="op">=</span> state_data[<span class="st">'Average_Salary'</span>].<span class="bu">round</span>(<span class="dv">0</span>)</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the interactive map</span></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Add salary data trace</span></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    go.Choropleth(</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>        locations<span class="op">=</span>state_data[<span class="st">'State'</span>],</span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>        z<span class="op">=</span>state_data[<span class="st">'Average_Salary'</span>],</span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>        locationmode<span class="op">=</span><span class="st">'USA-states'</span>,</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>        colorscale<span class="op">=</span><span class="st">'Blues'</span>,</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>state_data[<span class="st">'State'</span>],</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>        hovertemplate<span class="op">=</span><span class="st">'&lt;b&gt;%</span><span class="sc">{text}</span><span class="st">&lt;/b&gt;&lt;br&gt;'</span> <span class="op">+</span></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'Average Salary: $%</span><span class="sc">{z:,.0f}</span><span class="st">&lt;br&gt;'</span> <span class="op">+</span></span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'&lt;extra&gt;&lt;/extra&gt;'</span>,</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>        colorbar<span class="op">=</span><span class="bu">dict</span>(title<span class="op">=</span><span class="st">"Average Salary ($)"</span>),</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>        visible<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"Average Salary"</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Add job count data trace</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>    go.Choropleth(</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>        locations<span class="op">=</span>state_data[<span class="st">'State'</span>],</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>        z<span class="op">=</span>state_data[<span class="st">'Job_Count'</span>],</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>        locationmode<span class="op">=</span><span class="st">'USA-states'</span>,</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>        colorscale<span class="op">=</span><span class="st">'Reds'</span>,</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>state_data[<span class="st">'State'</span>],</span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>        hovertemplate<span class="op">=</span><span class="st">'&lt;b&gt;%</span><span class="sc">{text}</span><span class="st">&lt;/b&gt;&lt;br&gt;'</span> <span class="op">+</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'Job Postings: %</span><span class="sc">{z}</span><span class="st">&lt;br&gt;'</span> <span class="op">+</span></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'&lt;extra&gt;&lt;/extra&gt;'</span>,</span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>        colorbar<span class="op">=</span><span class="bu">dict</span>(title<span class="op">=</span><span class="st">"Number of Job Postings"</span>),</span>
+<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a>        visible<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"Job Postings"</span></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Update layout with buttons</span></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Job Market Analysis by State'</span>,</span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a>    geo<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a>        scope<span class="op">=</span><span class="st">'usa'</span>,</span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>        projection<span class="op">=</span>go.layout.geo.Projection(<span class="bu">type</span><span class="op">=</span><span class="st">'albers usa'</span>),</span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a>        showlakes<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-60"><a href="#cb26-60" aria-hidden="true" tabindex="-1"></a>        lakecolor<span class="op">=</span><span class="st">'rgb(255, 255, 255)'</span></span>
+<span id="cb26-61"><a href="#cb26-61" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a>    updatemenus<span class="op">=</span>[</span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a>        <span class="bu">dict</span>(</span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a>            <span class="bu">type</span><span class="op">=</span><span class="st">"buttons"</span>,</span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a>            direction<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a>            buttons<span class="op">=</span><span class="bu">list</span>([</span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a>                <span class="bu">dict</span>(</span>
+<span id="cb26-68"><a href="#cb26-68" aria-hidden="true" tabindex="-1"></a>                    args<span class="op">=</span>[{<span class="st">"visible"</span>: [<span class="va">True</span>, <span class="va">False</span>]},</span>
+<span id="cb26-69"><a href="#cb26-69" aria-hidden="true" tabindex="-1"></a>                          {<span class="st">"title"</span>: <span class="st">"Average Salary by State"</span>}],</span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a>                    label<span class="op">=</span><span class="st">"Average Salary"</span>,</span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a>                    method<span class="op">=</span><span class="st">"update"</span></span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a>                ),</span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a>                <span class="bu">dict</span>(</span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a>                    args<span class="op">=</span>[{<span class="st">"visible"</span>: [<span class="va">False</span>, <span class="va">True</span>]},</span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a>                          {<span class="st">"title"</span>: <span class="st">"Job Postings by State"</span>}],</span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a>                    label<span class="op">=</span><span class="st">"Job Postings"</span>,</span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a>                    method<span class="op">=</span><span class="st">"update"</span></span>
+<span id="cb26-78"><a href="#cb26-78" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb26-79"><a href="#cb26-79" aria-hidden="true" tabindex="-1"></a>            ]),</span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a>            pad<span class="op">=</span>{<span class="st">"r"</span>: <span class="dv">10</span>, <span class="st">"t"</span>: <span class="dv">10</span>},</span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a>            showactive<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span><span class="fl">0.01</span>,</span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a>            xanchor<span class="op">=</span><span class="st">"left"</span>,</span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a>            y<span class="op">=</span><span class="fl">1.02</span>,</span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a>            yanchor<span class="op">=</span><span class="st">"top"</span></span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a>        ),</span>
+<span id="cb26-87"><a href="#cb26-87" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb26-88"><a href="#cb26-88" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the figure as an HTML file</span></span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a>fig.write_html(<span class="st">"output/figures/state_map.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-3-extract-the-top-10-skills-by-category" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Plot 3 Extract the top 10 skills by category</h1>
+<div id="5496b4fc" class="cell" data-execution_count="64">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_skills_from_column(spark_df, col_name):</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    pandas_series <span class="op">=</span> df_selected[col_name].dropna()</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    all_skills <span class="op">=</span> []</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> pandas_series:</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>            items <span class="op">=</span> ast.literal_eval(s) <span class="cf">if</span> <span class="bu">isinstance</span>(s, <span class="bu">str</span>) <span class="kw">and</span> s.startswith(<span class="st">"["</span>) <span class="cf">else</span> s.split(<span class="st">';'</span>)</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>            all_skills.extend([skill.strip() <span class="cf">for</span> skill <span class="kw">in</span> items <span class="cf">if</span> skill.strip()])</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Counter(all_skills)</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the correspondence between columns and skill types</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>skill_categories <span class="op">=</span> {</span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'COMMON_SKILLS_NAME'</span>: <span class="st">'Common'</span>,</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SPECIALIZED_SKILLS_NAME'</span>: <span class="st">'Specialized'</span>,</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SOFTWARE_SKILLS_NAME'</span>: <span class="st">'Software'</span></span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrame storing the top 10 of each type</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>skill_top10_by_type <span class="op">=</span> {}</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification statistics skills</span></span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col, skill_type <span class="kw">in</span> skill_categories.items():</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> extract_skills_from_column(df_selected, col)</span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>    top10 <span class="op">=</span> pd.DataFrame(counter.most_common(<span class="dv">10</span>), columns<span class="op">=</span>[<span class="st">'Skill'</span>, <span class="st">'Count'</span>])</span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>    top10[<span class="st">'Type'</span>] <span class="op">=</span> skill_type</span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>    skill_top10_by_type[skill_type] <span class="op">=</span> top10</span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a>common_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Common'</span>]</span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a>specialized_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Specialized'</span>]</span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a>software_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Software'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="8cf7777b" class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">22</span>, <span class="dv">6</span>))</span>
 <span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_skills_from_column(spark_df, col_name):</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    pandas_series <span class="op">=</span> spark_df.select(col_name).dropna().toPandas()[col_name]</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    all_skills <span class="op">=</span> []</span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> s <span class="kw">in</span> pandas_series:</span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>            items <span class="op">=</span> ast.literal_eval(s) <span class="cf">if</span> <span class="bu">isinstance</span>(s, <span class="bu">str</span>) <span class="kw">and</span> s.startswith(<span class="st">"["</span>) <span class="cf">else</span> s.split(<span class="st">';'</span>)</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>            all_skills.extend([skill.strip() <span class="cf">for</span> skill <span class="kw">in</span> items <span class="cf">if</span> skill.strip()])</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>            <span class="cf">continue</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Counter(all_skills)</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the correspondence between columns and skill types</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>skill_categories <span class="op">=</span> {</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">'COMMON_SKILLS_NAME'</span>: <span class="st">'Common'</span>,</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SPECIALIZED_SKILLS_NAME'</span>: <span class="st">'Specialized'</span>,</span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SOFTWARE_SKILLS_NAME'</span>: <span class="st">'Software'</span></span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a><span class="co"># DataFrame storing the top 10 of each type</span></span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>skill_top10_by_type <span class="op">=</span> {}</span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Classification statistics skills</span></span>
-<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col, skill_type <span class="kw">in</span> skill_categories.items():</span>
-<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> extract_skills_from_column(df_selected, col)</span>
-<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>    top10 <span class="op">=</span> pd.DataFrame(counter.most_common(<span class="dv">10</span>), columns<span class="op">=</span>[<span class="st">'Skill'</span>, <span class="st">'Count'</span>])</span>
-<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>    top10[<span class="st">'Type'</span>] <span class="op">=</span> skill_type</span>
-<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>    skill_top10_by_type[skill_type] <span class="op">=</span> top10</span>
-<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>common_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Common'</span>]</span>
-<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>specialized_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Specialized'</span>]</span>
-<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>software_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Software'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>                                                                                </code></pre>
-</div>
-</div>
-<div id="8cf7777b" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">22</span>, <span class="dv">6</span>))</span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (skill_type, df_top10) <span class="kw">in</span> <span class="bu">zip</span>(axes, skill_top10_by_type.items()):</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>    ax.barh(df_top10[<span class="st">'Skill'</span>][::<span class="op">-</span><span class="dv">1</span>], df_top10[<span class="st">'Count'</span>][::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'orange'</span>)</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"Top 10 </span><span class="sc">{</span>skill_type<span class="sc">}</span><span class="ss"> Skills"</span>)</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Skill"</span>)</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ax, (skill_type, df_top10) <span class="kw">in</span> <span class="bu">zip</span>(axes, skill_top10_by_type.items()):</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    ax.barh(df_top10[<span class="st">'Skill'</span>][::<span class="op">-</span><span class="dv">1</span>], df_top10[<span class="st">'Count'</span>][::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f"Top 10 </span><span class="sc">{</span>skill_type<span class="sc">}</span><span class="ss"> Skills"</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">"Skill"</span>)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+<p><img src="data_analysis_files/figure-html/cell-18-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="abc87d35" class="cell" data-execution_count="78">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.cm <span class="im">import</span> get_cmap</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate N distinct colors using a colormap</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>job_roles <span class="op">=</span> df_pd[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].dropna().unique()</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>num_roles <span class="op">=</span> <span class="bu">len</span>(job_roles)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>cmap <span class="op">=</span> get_cmap(<span class="st">'tab20'</span>, num_roles)  <span class="co"># Use tab20 or another categorical map</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>role_to_color <span class="op">=</span> {role: cmap(i) <span class="cf">for</span> i, role <span class="kw">in</span> <span class="bu">enumerate</span>(job_roles)}</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> role <span class="kw">in</span> job_roles:</span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>    df_role <span class="op">=</span> df_pd[df_pd[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>] <span class="op">==</span> role]</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>    role_skill_top10 <span class="op">=</span> {}</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> col, skill_type <span class="kw">in</span> skill_categories.items():</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>        skill_counter <span class="op">=</span> extract_skills_from_column(df_role[col])</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        top10 <span class="op">=</span> pd.DataFrame(skill_counter.most_common(<span class="dv">10</span>), columns<span class="op">=</span>[<span class="st">'Skill'</span>, <span class="st">'Count'</span>])</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        role_skill_top10[skill_type] <span class="op">=</span> top10</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Get color for this role</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>    role_color <span class="op">=</span> role_to_color[role]</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot the role's top skills</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>    fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">22</span>, <span class="dv">6</span>))</span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> ax, (skill_type, df_top10) <span class="kw">in</span> <span class="bu">zip</span>(axes, role_skill_top10.items()):</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>        ax.barh(df_top10[<span class="st">'Skill'</span>][::<span class="op">-</span><span class="dv">1</span>], df_top10[<span class="st">'Count'</span>][::<span class="op">-</span><span class="dv">1</span>], color<span class="op">=</span>role_color)</span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>        ax.set_title(<span class="ss">f"Top 10 </span><span class="sc">{</span>skill_type<span class="sc">}</span><span class="ss"> Skills</span><span class="ch">\n</span><span class="ss">(</span><span class="sc">{</span>role<span class="sc">}</span><span class="ss">)"</span>)</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">"Frequency"</span>)</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">"Skill"</span>)</span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/tmp/ipykernel_3118/3286968989.py:8: MatplotlibDeprecationWarning:
+
+The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-3.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-4.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-5.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-6.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-7.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-8.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-9.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-10.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-11.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-19-output-12.png" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
