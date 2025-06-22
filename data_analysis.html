@@ -154,6 +154,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#plot-2-geographic-distribution-of-salary-and-job-demand" id="toc-plot-2-geographic-distribution-of-salary-and-job-demand" class="nav-link active" data-scroll-target="#plot-2-geographic-distribution-of-salary-and-job-demand"><span class="header-section-number">1</span> Plot 2 Geographic distribution of salary and job demand</a></li>
   <li><a href="#plot-3-extract-the-top-10-skills-by-category" id="toc-plot-3-extract-the-top-10-skills-by-category" class="nav-link" data-scroll-target="#plot-3-extract-the-top-10-skills-by-category"><span class="header-section-number">2</span> Plot 3 Extract the top 10 skills by category</a></li>
+  <li><a href="#plot-4-kmeans-clustering-for-naics2_name-skills" id="toc-plot-4-kmeans-clustering-for-naics2_name-skills" class="nav-link" data-scroll-target="#plot-4-kmeans-clustering-for-naics2_name-skills"><span class="header-section-number">3</span> PLOT 4 Kmeans clustering for NAICS2_NAME skills</a></li>
+  <li><a href="#plot-5-random-forest-classification" id="toc-plot-5-random-forest-classification" class="nav-link" data-scroll-target="#plot-5-random-forest-classification"><span class="header-section-number">4</span> PLOT 5 Random Forest Classification</a></li>
   </ul>
 </nav>
     </div>
@@ -908,7 +910,9 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </div>
 </div>
 </div>
-<p>KMEANS</p>
+</section>
+<section id="plot-4-kmeans-clustering-for-naics2_name-skills" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> PLOT 4 Kmeans clustering for NAICS2_NAME skills</h1>
 <div id="84961731" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
@@ -1042,6 +1046,34 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </div>
 </div>
 </div>
+<div id="17489d74" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> vectorizer.get_feature_names_out()</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA loading matrix  DataFrame</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>loadings <span class="op">=</span> pd.DataFrame(pca.components_.T,  </span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>                        columns<span class="op">=</span>[<span class="st">'PC1'</span>, <span class="st">'PC2'</span>],  </span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>                        index<span class="op">=</span>selected_features)  </span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loadings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  PC1       PC2
+access       0.021897  0.060153
+agile       -0.010284  0.014830
+amazon       0.008611  0.007505
+analysis     0.048207 -0.015809
+analytical   0.094255  0.038416
+...               ...       ...
+user         0.002340  0.007741
+warehousing  0.004574  0.018170
+web          0.036786 -0.004386
+workflow     0.005259  0.014606
+writing      0.011131  0.027417
+
+[100 rows x 2 columns]</code></pre>
+</div>
+</div>
+</section>
+<section id="plot-5-random-forest-classification" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> PLOT 5 Random Forest Classification</h1>
 
 
 </section>
