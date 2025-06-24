@@ -9,8 +9,8 @@ website:
         text: Introduction
       - href: data_analysis.ipynb
         text: Data Analysis
-      - href: Key findings with analysis.qmd
-        text: Key findings with analysis
+      - href: Key_findings.qmd
+        text: Key Findings
 format:
   html:
     theme:
