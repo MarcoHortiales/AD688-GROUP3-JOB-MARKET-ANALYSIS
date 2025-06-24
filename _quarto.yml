@@ -11,6 +11,8 @@ website:
         text: Data Analysis
       - href: Key_findings.qmd
         text: Key Findings
+      - href: Summary.qmd
+        text: Summary
 format:
   html:
     theme:

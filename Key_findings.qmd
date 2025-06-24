@@ -8,10 +8,14 @@ title: "Key Findings"
 # PLOT 2 Select (LOT_NAME_SPECIFIC) Mean Salary & Job Demand
 
 This chart shows the number of job openings and average salaries for different professional positions. The dual-axis coordinates allow us to observe the relationship between supply, demand and strategic career path.
-1. Data Analyst has the most job openings, indicating the strongest market demand, but the average salary is relatively medium, which is a position with a low entry threshold.
-2. Enterprise Architect and Oracle Consultant/Analyst have few job openings, but the average salary is the highest, reflecting the skills are highly specialized and scarce.
-3. Healthcare Analyst and Marketing Analyst have low salaries and fewer job openings, the positions with relatively limited demand and value.
-4. General ERP Analyst/Consultant combines higher salaries with medium job openings, making it a career choice that balances compensation and opportunities.
+
+Data Analyst has the most job openings, indicating the strongest market demand, but the average salary is relatively medium, which is a position with a low entry threshold.
+
+Enterprise Architect and Oracle Consultant/Analyst have few job openings, but the average salary is the highest, reflecting the skills are highly specialized and scarce.
+   
+Healthcare Analyst and Marketing Analyst have low salaries and fewer job openings, the positions with relatively limited demand and value.
+   
+General ERP Analyst/Consultant combines higher salaries with medium job openings, making it a career choice that balances compensation and opportunities.
 
 
 # PLOT 3 Skill_radar_chart
