@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>PLOT 1 Select (LOT_NAME_SPECIFIC) Mean Salary &amp; Job Demand – Job Market Analysis Group 3</title>
+<title>PLOT 2 Select (LOT_NAME_SPECIFIC) Mean Salary &amp; Job Demand – Job Market Analysis Group 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#plot-2-geographic-distribution-of-salary-and-job-demand" id="toc-plot-2-geographic-distribution-of-salary-and-job-demand" class="nav-link active" data-scroll-target="#plot-2-geographic-distribution-of-salary-and-job-demand"><span class="header-section-number">1</span> Plot 2 Geographic distribution of salary and job demand</a></li>
+  <li><a href="#plot-1-geographic-distribution-of-salary-and-job-demand" id="toc-plot-1-geographic-distribution-of-salary-and-job-demand" class="nav-link active" data-scroll-target="#plot-1-geographic-distribution-of-salary-and-job-demand"><span class="header-section-number">1</span> Plot 1 Geographic distribution of salary and job demand</a></li>
   <li><a href="#plot-3-extract-the-top-10-skills-by-category" id="toc-plot-3-extract-the-top-10-skills-by-category" class="nav-link" data-scroll-target="#plot-3-extract-the-top-10-skills-by-category"><span class="header-section-number">2</span> Plot 3 Extract the top 10 skills by category</a></li>
   <li><a href="#skill-gap-analysis" id="toc-skill-gap-analysis" class="nav-link" data-scroll-target="#skill-gap-analysis"><span class="header-section-number">3</span> Skill Gap Analysis</a></li>
   <li><a href="#plot-4-kmeans-clustering-for-naics2_name-skills" id="toc-plot-4-kmeans-clustering-for-naics2_name-skills" class="nav-link" data-scroll-target="#plot-4-kmeans-clustering-for-naics2_name-skills"><span class="header-section-number">4</span> PLOT 4 Kmeans clustering for NAICS2_NAME skills</a></li>
@@ -165,7 +165,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">PLOT 1 Select (LOT_NAME_SPECIFIC) Mean Salary &amp; Job Demand</h1>
+<h1 class="title">PLOT 2 Select (LOT_NAME_SPECIFIC) Mean Salary &amp; Job Demand</h1>
 </div>
 
 
@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/06/22 18:59:26 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/06/24 15:01:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -347,7 +347,7 @@ root
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>25/06/22 18:59:49 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+<pre><code>25/06/24 15:02:08 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -599,8 +599,8 @@ Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<section id="plot-2-geographic-distribution-of-salary-and-job-demand" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> Plot 2 Geographic distribution of salary and job demand</h1>
+<section id="plot-1-geographic-distribution-of-salary-and-job-demand" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Plot 1 Geographic distribution of salary and job demand</h1>
 <div id="bec51d66" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FIPS to State Abbreviation Mapping</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fips_to_state <span class="op">=</span> {</span>
@@ -828,7 +828,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
 <span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_9595/3395768467.py:31: MatplotlibDeprecationWarning:
+<pre><code>/tmp/ipykernel_2716/3395768467.py:31: MatplotlibDeprecationWarning:
 
 The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
 </code></pre>
@@ -1084,16 +1084,16 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 <span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> merge_skills_columns_pandas(df_selected)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="6e8d80ce" class="cell" data-execution_count="31">
+<div id="6e8d80ce" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer(max_features<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(df_skills[<span class="st">'skills_text'</span>])</span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>vectorizer.get_feature_names_out()[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
+<div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>array(['access', 'accounting', 'agile', 'amazon', 'analysis',
        'analytical', 'analytics', 'and', 'apache', 'api'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="576a68c4" class="cell" data-execution_count="32">
+<div id="576a68c4" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> MiniBatchKMeans</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -1134,12 +1134,12 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </div>
 </div>
 </div>
-<div id="66936108" class="cell" data-execution_count="33">
+<div id="66936108" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>best_k <span class="op">=</span> <span class="dv">4</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>best_k, random_state<span class="op">=</span><span class="dv">42</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>df_skills[<span class="st">'cluster'</span>] <span class="op">=</span> kmeans.fit_predict(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="df89b43a" class="cell" data-execution_count="34">
+<div id="df89b43a" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1184,7 +1184,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </div>
 </div>
 </div>
-<div id="17489d74" class="cell" data-execution_count="30">
+<div id="17489d74" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> vectorizer.get_feature_names_out()</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA loading matrix  DataFrame</span></span>
@@ -1212,7 +1212,7 @@ writing      0.011131  0.027417
 </section>
 <section id="plot-5-random-forest-classification" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> PLOT 5 Random Forest Classification</h1>
-<div id="7c035061" class="cell" data-execution_count="35">
+<div id="7c035061" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df_skills.copy()</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1236,7 +1236,7 @@ writing      0.011131  0.027417
 <span id="cb48-21"><a href="#cb48-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Target: Salary</span></span>
 <span id="cb48-22"><a href="#cb48-22" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_model[<span class="st">'SALARY'</span>].fillna(df_model[<span class="st">'SALARY'</span>].median())  <span class="co"># Fill missing values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7a422621" class="cell" data-execution_count="36">
+<div id="7a422621" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Building a regression model</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
