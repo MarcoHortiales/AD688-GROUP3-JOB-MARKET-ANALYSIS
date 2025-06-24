@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="bed9e175" class="cell" data-execution_count="1">
+<div id="bed9e175" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql <span class="im">import</span> SparkSession</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
@@ -207,7 +207,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/06/24 19:10:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/06/24 20:12:27 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -347,7 +347,7 @@ root
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>25/06/24 19:11:03 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+<pre><code>25/06/24 20:12:44 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -364,7 +364,7 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="8335e474" class="cell" data-execution_count="2">
+<div id="8335e474" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>columns_to_drop <span class="op">=</span> [</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"ID"</span>, <span class="st">"URL"</span>, <span class="st">"ACTIVE_URLS"</span>, <span class="st">"DUPLICATES"</span>, <span class="st">"LAST_UPDATED_TIMESTAMP"</span>,</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAICS2"</span>, <span class="st">"NAICS3"</span>, <span class="st">"NAICS4"</span>, <span class="st">"NAICS5"</span>, <span class="st">"NAICS6"</span>,</span>
@@ -386,7 +386,7 @@ only showing top 5 rows
 </code></pre>
 </div>
 </div>
-<div id="e8e75209" class="cell" data-execution_count="3">
+<div id="e8e75209" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>selected_columns <span class="op">=</span> [</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#job name and type of employment</span></span>
@@ -420,9 +420,9 @@ only showing top 5 rows
 <pre><code>                                                                                </code></pre>
 </div>
 </div>
-<div id="ea18d9be" class="cell" data-execution_count="4">
+<div id="ea18d9be" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>df_selected.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>TITLE_RAW                               104
 TITLE_NAME                               44
 TITLE_CLEAN                             140
@@ -451,15 +451,15 @@ COMPANY_RAW                             541
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="54f2439a" class="cell" data-execution_count="5">
+<div id="54f2439a" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>df_selected.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(72498, 25)</code></pre>
 </div>
 </div>
-<div id="acc9ccba" class="cell" data-execution_count="6">
+<div id="acc9ccba" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].unique()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>array(['General ERP Analyst / Consultant', 'Oracle Consultant / Analyst',
        'Data Analyst', 'Enterprise Architect',
        'Business Analyst (General)', 'SAP Analyst / Admin',
@@ -468,12 +468,12 @@ dtype: int64</code></pre>
        'Marketing Analyst'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="a2e9674c" class="cell" data-execution_count="7">
+<div id="a2e9674c" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df_selected[df_selected[<span class="st">'SALARY'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f91cb281" class="cell" data-execution_count="8">
+<div id="f91cb281" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_salary.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>TITLE_RAW                                26
 TITLE_NAME                                0
 TITLE_CLEAN                              56
@@ -502,15 +502,15 @@ COMPANY_RAW                             227
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="af40cf90" class="cell" data-execution_count="9">
+<div id="af40cf90" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_salary.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>(30808, 25)</code></pre>
 </div>
 </div>
-<div id="8a1989be" class="cell" data-execution_count="10">
+<div id="8a1989be" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>LOT_V6_SPECIALIZED_OCCUPATION_NAME
 Data Analyst                        27832
 General ERP Analyst / Consultant     9931
@@ -526,7 +526,7 @@ Marketing Analyst                     153
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="50119109" class="cell" data-execution_count="11">
+<div id="50119109" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_job <span class="op">=</span> df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>),color <span class="op">=</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -536,9 +536,9 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="4836a79d" class="cell" data-execution_count="12">
+<div id="4836a79d" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_selected.groupby(<span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>)[<span class="st">"SALARY"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="19">
 <pre><code>LOT_V6_SPECIALIZED_OCCUPATION_NAME
 Business Analyst (General)          100888.607317
 Business Intelligence Analyst       108886.397778
@@ -554,7 +554,7 @@ SAP Analyst / Admin                 115745.803736
 Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
-<div id="1bdb4653" class="cell" data-execution_count="13">
+<div id="1bdb4653" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -601,7 +601,7 @@ Name: SALARY, dtype: float64</code></pre>
 </div>
 <section id="plot-1-geographic-distribution-of-salary-and-job-demand" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Plot 1 Geographic distribution of salary and job demand</h1>
-<div id="bec51d66" class="cell" data-execution_count="14">
+<div id="bec51d66" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FIPS to State Abbreviation Mapping</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fips_to_state <span class="op">=</span> {</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">"AL"</span>, <span class="dv">2</span>: <span class="st">"AK"</span>, <span class="dv">4</span>: <span class="st">"AZ"</span>, <span class="dv">5</span>: <span class="st">"AR"</span>, <span class="dv">6</span>: <span class="st">"CA"</span>, <span class="dv">8</span>: <span class="st">"CO"</span>, <span class="dv">9</span>: <span class="st">"CT"</span>, <span class="dv">10</span>: <span class="st">"DE"</span>, <span class="dv">11</span>: <span class="st">"DC"</span>,</span>
@@ -616,7 +616,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Map numeric codes to abbreviations</span></span>
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'STATE'</span>] <span class="op">=</span> df_selected[<span class="st">'STATE'</span>].<span class="bu">map</span>(fips_to_state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4887e700" class="cell" data-execution_count="15">
+<div id="4887e700" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
@@ -712,7 +712,7 @@ Name: SALARY, dtype: float64</code></pre>
 </section>
 <section id="plot-3-extract-the-top-10-skills-by-category" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Plot 3 Extract the top 10 skills by category</h1>
-<div id="5496b4fc" class="cell" data-execution_count="16">
+<div id="5496b4fc" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -750,7 +750,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>specialized_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Specialized'</span>]</span>
 <span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>software_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Software'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8cf7777b" class="cell" data-execution_count="17">
+<div id="8cf7777b" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">22</span>, <span class="dv">6</span>))</span>
@@ -771,7 +771,7 @@ Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="6a127fed" class="cell" data-execution_count="18">
+<div id="6a127fed" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.cm <span class="im">import</span> get_cmap</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -828,7 +828,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
 <span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_3970/3395768467.py:31: MatplotlibDeprecationWarning:
+<pre><code>/tmp/ipykernel_6494/3395768467.py:31: MatplotlibDeprecationWarning:
 
 The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
 </code></pre>
@@ -914,7 +914,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </section>
 <section id="skill-gap-analysis" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Skill Gap Analysis</h1>
-<div id="ddaf0429" class="cell" data-execution_count="19">
+<div id="ddaf0429" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -982,7 +982,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 - SAS (Software)</code></pre>
 </div>
 </div>
-<div id="e0c7e221" class="cell" data-execution_count="20">
+<div id="e0c7e221" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>skills_data <span class="op">=</span> {</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Skill"</span>: required_skills,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Marco"</span>: [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
@@ -1019,7 +1019,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 23                            SAS (Software)      1       1</code></pre>
 </div>
 </div>
-<div id="38de6fce" class="cell" data-execution_count="21">
+<div id="38de6fce" class="cell" data-execution_count="34">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> df_ratings.melt(id_vars<span class="op">=</span><span class="st">"Skill"</span>, var_name<span class="op">=</span><span class="st">"Person"</span>, value_name<span class="op">=</span><span class="st">"Rating"</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotly Express Radar Chart</span></span>
@@ -1051,7 +1051,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </section>
 <section id="plot-4-kmeans-clustering-for-naics2_name-skills-for-analyst-position" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> PLOT 4 Kmeans clustering for NAICS2_NAME skills (for Analyst position)</h1>
-<div id="84961731" class="cell" data-execution_count="34">
+<div id="84961731" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1084,7 +1084,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 <span id="cb38-30"><a href="#cb38-30" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> merge_skills_columns_pandas(df_analyst)</span>
 <span id="cb38-31"><a href="#cb38-31" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cb070fbf" class="cell" data-execution_count="37">
+<div id="cb070fbf" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_skills[<span class="st">'TITLE_NAME'</span>].unique()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Enterprise Analysts' 'Data Analysts' 'Management Analysts' ...
@@ -1092,7 +1092,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
  'Philanthropy Interns']</code></pre>
 </div>
 </div>
-<div id="6e8d80ce" class="cell" data-execution_count="35">
+<div id="6e8d80ce" class="cell" data-execution_count="40">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer(max_features<span class="op">=</span><span class="dv">100</span>)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(df_skills[<span class="st">'skills_text'</span>])</span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vectorizer.get_feature_names_out()[:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1101,7 +1101,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
  'apache' 'application' 'applications']</code></pre>
 </div>
 </div>
-<div id="576a68c4" class="cell" data-execution_count="43">
+<div id="576a68c4" class="cell" data-execution_count="45">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> MiniBatchKMeans</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
@@ -1133,15 +1133,22 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 <span id="cb43-29"><a href="#cb43-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb43-30"><a href="#cb43-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb43-31"><a href="#cb43-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-26-output-1.png" class="img-fluid figure-img"></p>
-</figure>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[45]</span><span class="ansi-green-fg">, line 13</span>
+<span class="ansi-green-fg">     11</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> k <span style="font-weight:bold;color:rgb(175,0,255)">in</span> K_range:
+<span class="ansi-green-fg">     12</span>     mbk = MiniBatchKMeans(n_clusters=k, random_state=<span class="ansi-green-fg">42</span>, batch_size=<span class="ansi-green-fg">500</span>, n_init=<span class="ansi-green-fg">10</span>)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">13</span>     labels = mbk.fit_predict(<span class="ansi-yellow-bg">X_sample</span>)
+<span class="ansi-green-fg">     14</span>     inertias.append(mbk.inertia_)
+<span class="ansi-green-fg">     15</span>     sil_scores.append(silhouette_score(X_sample, labels))
+
+<span class="ansi-red-fg">NameError</span>: name 'X_sample' is not defined</pre>
 </div>
 </div>
 </div>
-<div id="4bdbbf04" class="cell">
+<div id="4bdbbf04" class="cell" data-execution_count="44">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>best_k <span class="op">=</span> <span class="dv">4</span></span>
@@ -1150,7 +1157,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 <span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>df_skills[<span class="st">'cluster'</span>] <span class="op">=</span> labels  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="df89b43a" class="cell" data-execution_count="45">
+<div id="df89b43a" class="cell" data-execution_count="46">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1223,7 +1230,7 @@ writing        0.006385  0.023276
 </section>
 <section id="plot-5-random-forest-classification" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> PLOT 5 Random Forest Classification</h1>
-<div id="7c035061" class="cell" data-execution_count="30">
+<div id="7c035061" class="cell">
 <div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data</span></span>
 <span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>df_model <span class="op">=</span> df_skills.copy()</span>
 <span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1247,7 +1254,7 @@ writing        0.006385  0.023276
 <span id="cb49-21"><a href="#cb49-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Target: Salary</span></span>
 <span id="cb49-22"><a href="#cb49-22" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_model[<span class="st">'SALARY'</span>].fillna(df_model[<span class="st">'SALARY'</span>].median())  <span class="co"># Fill missing values</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="7a422621" class="cell" data-execution_count="31">
+<div id="7a422621" class="cell">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Building a regression model</span></span>
 <span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestRegressor</span>
