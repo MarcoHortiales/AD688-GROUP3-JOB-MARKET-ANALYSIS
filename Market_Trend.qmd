@@ -7,7 +7,7 @@ title: "Key Findings"
 ```{=html}
 <iframe width="780" height="600" src="./output/figures/Plot 1 Geographic distribution of salary and job demand  state_map.html" title="Geographic distribution of salary and job demand"></iframe>
 ```
-
+(content)
 
 
 # Select (LOT_NAME_SPECIFIC) Mean Salary & Job Demand  

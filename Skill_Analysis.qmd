@@ -3,9 +3,16 @@ title: "Key Findings"
 ---
 
 # PLOT 3 Skill_radar_chart
+```{=html}
+<iframe width="780" height="600" src="./output/figures/skill_radar_chart.html" title="Skill_radar_chart"></iframe>
+```
 
+(content)
 
 # PLOT 4 Kmeans clustering for NAICS2_NAME skills (for Analyst position)
+![Select  Two Way Find Best K](output/Find_best_K.png)
+
+
 ![Select (LOT_NAME_SPECIFIC) Mean Salary & Job Demand](output/Kmeans_clustering_for_skills.png) 
 
 This figure reveals how different skill groups correspond to analyst positions. This insight helps align training, hiring, and upskilling strategies with industry-specific needs. 
@@ -23,4 +30,4 @@ Cluster 3 — Technology-oriented group (Programming, Data, SQL, Python)
 This group is obviously highly technical, covering core skills (such as Programming, Python, and SQL.) These positions usually require strong programming and logic skills and suitable for computer, statistics, engineering backgrounds or those who have completed technical transformation training.
 
 
-# PLOT 5 Random Forest 
+#  Random Forest 
