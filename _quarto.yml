@@ -8,11 +8,11 @@ website:
       - href: index.qmd
         text: Introduction
       - href: data_analysis.ipynb
-        text: Data Analysis
+        text: Market Trends
       - href: Key_findings.qmd
-        text: Key Findings
-      - href: Summary.qmd
-        text: Summary
+        text: Skill Analysis
+      - href: Career_Strategy.qmd
+        text: Career Strategy
 format:
   html:
     theme:
