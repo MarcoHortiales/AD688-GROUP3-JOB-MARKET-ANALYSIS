@@ -5,11 +5,11 @@ website:
   title: "Job Market Analysis Group 3"
   navbar:
     left:
-      - href: index.qmd
+      - href: Introduction.qmd
         text: Introduction
-      - href: data_analysis.ipynb
+      - href: Market_Trend.qmd
         text: Market Trends
-      - href: Key_findings.qmd
+      - href: Skill_Analysis.qmd
         text: Skill Analysis
       - href: Career_Strategy.qmd
         text: Career Strategy
