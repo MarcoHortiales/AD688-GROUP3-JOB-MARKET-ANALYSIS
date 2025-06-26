@@ -214,7 +214,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Setting default log level to "WARN".
 To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
-25/06/25 16:29:05 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+25/06/26 18:59:25 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -354,7 +354,7 @@ root
 </code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>25/06/25 16:29:23 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+<pre><code>25/06/26 18:59:44 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
                                                                                 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -475,12 +475,12 @@ dtype: int64</code></pre>
        'Marketing Analyst'], dtype=object)</code></pre>
 </div>
 </div>
-<div id="a2e9674c" class="cell" data-execution_count="7">
+<div id="a2e9674c" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>df_salary <span class="op">=</span> df_selected[df_selected[<span class="st">'SALARY'</span>] <span class="op">&gt;</span> <span class="dv">0</span>].copy()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="f91cb281" class="cell" data-execution_count="8">
+<div id="f91cb281" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df_salary.isnull().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>TITLE_RAW                                26
 TITLE_NAME                                0
 TITLE_CLEAN                              56
@@ -509,15 +509,15 @@ COMPANY_RAW                             227
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="af40cf90" class="cell" data-execution_count="9">
+<div id="af40cf90" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_salary.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="10">
 <pre><code>(30808, 25)</code></pre>
 </div>
 </div>
-<div id="8a1989be" class="cell" data-execution_count="10">
+<div id="8a1989be" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>LOT_V6_SPECIALIZED_OCCUPATION_NAME
 Data Analyst                        27832
 General ERP Analyst / Consultant     9931
@@ -533,7 +533,7 @@ Marketing Analyst                     153
 Name: count, dtype: int64</code></pre>
 </div>
 </div>
-<div id="50119109" class="cell" data-execution_count="11">
+<div id="50119109" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>df_job <span class="op">=</span> df_selected[<span class="st">'LOT_V6_SPECIALIZED_OCCUPATION_NAME'</span>].value_counts().plot(kind<span class="op">=</span><span class="st">'bar'</span>, figsize<span class="op">=</span>(<span class="dv">20</span>,<span class="dv">10</span>),color <span class="op">=</span> <span class="st">'blue'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
@@ -543,9 +543,9 @@ Name: count, dtype: int64</code></pre>
 </div>
 </div>
 </div>
-<div id="4836a79d" class="cell" data-execution_count="12">
+<div id="4836a79d" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>df_selected.groupby(<span class="st">"LOT_V6_SPECIALIZED_OCCUPATION_NAME"</span>)[<span class="st">"SALARY"</span>].mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>LOT_V6_SPECIALIZED_OCCUPATION_NAME
 Business Analyst (General)          100888.607317
 Business Intelligence Analyst       108886.397778
@@ -561,7 +561,7 @@ SAP Analyst / Admin                 115745.803736
 Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
-<div id="1bdb4653" class="cell" data-execution_count="13">
+<div id="1bdb4653" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -608,7 +608,7 @@ Name: SALARY, dtype: float64</code></pre>
 </div>
 <section id="plot-1-geographic-distribution-of-salary-and-job-demand" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Plot 1 Geographic distribution of salary and job demand</h1>
-<div id="bec51d66" class="cell" data-execution_count="14">
+<div id="bec51d66" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FIPS to State Abbreviation Mapping</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fips_to_state <span class="op">=</span> {</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">1</span>: <span class="st">"AL"</span>, <span class="dv">2</span>: <span class="st">"AK"</span>, <span class="dv">4</span>: <span class="st">"AZ"</span>, <span class="dv">5</span>: <span class="st">"AR"</span>, <span class="dv">6</span>: <span class="st">"CA"</span>, <span class="dv">8</span>: <span class="st">"CO"</span>, <span class="dv">9</span>: <span class="st">"CT"</span>, <span class="dv">10</span>: <span class="st">"DE"</span>, <span class="dv">11</span>: <span class="st">"DC"</span>,</span>
@@ -623,7 +623,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Map numeric codes to abbreviations</span></span>
 <span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>df_selected[<span class="st">'STATE'</span>] <span class="op">=</span> df_selected[<span class="st">'STATE'</span>].<span class="bu">map</span>(fips_to_state)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="4887e700" class="cell">
+<div id="4887e700" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
@@ -720,7 +720,7 @@ Name: SALARY, dtype: float64</code></pre>
 </section>
 <section id="plot-3-extract-the-top-10-skills-by-category" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Plot 3 Extract the top 10 skills by category</h1>
-<div id="5496b4fc" class="cell" data-execution_count="16">
+<div id="5496b4fc" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -758,7 +758,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a>specialized_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Specialized'</span>]</span>
 <span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>software_skills_top10 <span class="op">=</span> skill_top10_by_type[<span class="st">'Software'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8cf7777b" class="cell" data-execution_count="17">
+<div id="8cf7777b" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">22</span>, <span class="dv">6</span>))</span>
@@ -779,7 +779,7 @@ Name: SALARY, dtype: float64</code></pre>
 </div>
 </div>
 </div>
-<div id="6a127fed" class="cell" data-execution_count="18">
+<div id="6a127fed" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.cm <span class="im">import</span> get_cmap</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -836,7 +836,7 @@ Name: SALARY, dtype: float64</code></pre>
 <span id="cb31-54"><a href="#cb31-54" aria-hidden="true" tabindex="-1"></a>    plt.tight_layout()</span>
 <span id="cb31-55"><a href="#cb31-55" aria-hidden="true" tabindex="-1"></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_1963/3395768467.py:31: MatplotlibDeprecationWarning:
+<pre><code>/tmp/ipykernel_2051/3395768467.py:31: MatplotlibDeprecationWarning:
 
 The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.11. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap()`` or ``pyplot.get_cmap()`` instead.
 </code></pre>
@@ -922,7 +922,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 </section>
 <section id="skill-gap-analysis" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Skill Gap Analysis</h1>
-<div id="ddaf0429" class="cell" data-execution_count="19">
+<div id="ddaf0429" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -990,7 +990,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 - SAS (Software)</code></pre>
 </div>
 </div>
-<div id="e0c7e221" class="cell" data-execution_count="41">
+<div id="e0c7e221" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>skills_data <span class="op">=</span> {</span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Skill"</span>: required_skills,</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Marco"</span>: [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">3</span>, <span class="dv">1</span>],</span>
@@ -1027,7 +1027,7 @@ The get_cmap function was deprecated in Matplotlib 3.7 and will be removed in 3.
 23                            SAS (Software)      1       1</code></pre>
 </div>
 </div>
-<div id="38de6fce" class="cell" data-execution_count="43">
+<div id="38de6fce" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> df_ratings.melt(id_vars<span class="op">=</span><span class="st">"Skill"</span>, var_name<span class="op">=</span><span class="st">"Person"</span>, value_name<span class="op">=</span><span class="st">"Rating"</span>)</span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotly Express Radar Chart</span></span>
@@ -1072,7 +1072,7 @@ Millie's average rating: 2.71 / 5.00</code></pre>
 </section>
 <section id="plot-4-kmeans-clustering-for-naics2_name-skills-for-analyst-position" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> PLOT 4 Kmeans clustering for NAICS2_NAME skills (for Analyst position)</h1>
-<div id="84961731" class="cell" data-execution_count="22">
+<div id="84961731" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1105,7 +1105,7 @@ Millie's average rating: 2.71 / 5.00</code></pre>
 <span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>df_skills <span class="op">=</span> merge_skills_columns_pandas(df_analyst)</span>
 <span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cb070fbf" class="cell" data-execution_count="23">
+<div id="cb070fbf" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_skills[<span class="st">'TITLE_NAME'</span>].unique()) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>['Enterprise Analysts' 'Data Analysts' 'Management Analysts' ...
@@ -1113,63 +1113,56 @@ Millie's average rating: 2.71 / 5.00</code></pre>
  'Philanthropy Interns']</code></pre>
 </div>
 </div>
-<div id="6e8d80ce" class="cell" data-execution_count="24">
+<div id="6e8d80ce" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>vectorizer <span class="op">=</span> CountVectorizer(max_features<span class="op">=</span><span class="dv">100</span>)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> vectorizer.fit_transform(df_skills[<span class="st">'skills_text'</span>])</span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vectorizer.get_feature_names_out()[:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>df_sample <span class="op">=</span> df_skills.sample(n<span class="op">=</span><span class="dv">1000</span>, random_state<span class="op">=</span><span class="dv">42</span>) </span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>X_sample <span class="op">=</span> vectorizer.fit_transform(df_sample[<span class="st">'skills_text'</span>]) </span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(vectorizer.get_feature_names_out()[:<span class="dv">10</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['access' 'accounting' 'amazon' 'analysis' 'analytical' 'analytics' 'and'
- 'apache' 'application' 'applications']</code></pre>
+<pre><code>['access' 'accounting' 'analysis' 'analytical' 'analytics' 'and' 'apache'
+ 'application' 'applications' 'azure']</code></pre>
 </div>
 </div>
-<div id="576a68c4" class="cell" data-execution_count="25">
+<div id="576a68c4" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.feature_extraction.text <span class="im">import</span> CountVectorizer</span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> MiniBatchKMeans</span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> silhouette_score</span>
 <span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Model building and evaluation metrics</span></span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>inertias <span class="op">=</span> []</span>
-<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>sil_scores <span class="op">=</span> []</span>
-<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a>K_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">6</span>)</span>
-<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> K_range:</span>
-<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    mbk <span class="op">=</span> MiniBatchKMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>, batch_size<span class="op">=</span><span class="dv">500</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> mbk.fit_predict(X_sample)</span>
-<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    inertias.append(mbk.inertia_)</span>
-<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a>    sil_scores.append(silhouette_score(X_sample, labels))</span>
-<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co"># PLOT Elbow &amp; Silhouette Score</span></span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
-<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(K_range, inertias, marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Elbow Method (Inertia)"</span>)</span>
-<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"Number of Clusters (k)"</span>)</span>
-<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Inertia"</span>)</span>
-<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(K_range, sil_scores, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
-<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Silhouette Score"</span>)</span>
-<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Number of Clusters (k)"</span>)</span>
-<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Score"</span>)</span>
-<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb45-31"><a href="#cb45-31" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[25]</span><span class="ansi-green-fg">, line 13</span>
-<span class="ansi-green-fg">     11</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> k <span style="font-weight:bold;color:rgb(175,0,255)">in</span> K_range:
-<span class="ansi-green-fg">     12</span>     mbk = MiniBatchKMeans(n_clusters=k, random_state=<span class="ansi-green-fg">42</span>, batch_size=<span class="ansi-green-fg">500</span>, n_init=<span class="ansi-green-fg">10</span>)
-<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">13</span>     labels = mbk.fit_predict(<span class="ansi-yellow-bg">X_sample</span>)
-<span class="ansi-green-fg">     14</span>     inertias.append(mbk.inertia_)
-<span class="ansi-green-fg">     15</span>     sil_scores.append(silhouette_score(X_sample, labels))
-
-<span class="ansi-red-fg">NameError</span>: name 'X_sample' is not defined</pre>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>inertias <span class="op">=</span> []</span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>sil_scores <span class="op">=</span> []</span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a>K_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">2</span>, <span class="dv">6</span>)</span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> K_range:</span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a>    mbk <span class="op">=</span> MiniBatchKMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">42</span>, batch_size<span class="op">=</span><span class="dv">256</span>, n_init<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb45-12"><a href="#cb45-12" aria-hidden="true" tabindex="-1"></a>    labels <span class="op">=</span> mbk.fit_predict(X_sample)</span>
+<span id="cb45-13"><a href="#cb45-13" aria-hidden="true" tabindex="-1"></a>    inertias.append(mbk.inertia_)</span>
+<span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a>    sil_scores.append(silhouette_score(X_sample, labels))</span>
+<span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(K_range, inertias, marker<span class="op">=</span><span class="st">'o'</span>)</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">"Elbow Method (Inertia)"</span>)</span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">"Number of Clusters (k)"</span>)</span>
+<span id="cb45-21"><a href="#cb45-21" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">"Inertia"</span>)</span>
+<span id="cb45-22"><a href="#cb45-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-23"><a href="#cb45-23" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(K_range, sil_scores, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'orange'</span>)</span>
+<span id="cb45-24"><a href="#cb45-24" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">"Silhouette Score"</span>)</span>
+<span id="cb45-25"><a href="#cb45-25" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">"Number of Clusters (k)"</span>)</span>
+<span id="cb45-26"><a href="#cb45-26" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">"Score"</span>)</span>
+<span id="cb45-27"><a href="#cb45-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-28"><a href="#cb45-28" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb45-29"><a href="#cb45-29" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb45-30"><a href="#cb45-30" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="data_analysis_files/figure-html/cell-27-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
 </div>
-<div id="4bdbbf04" class="cell">
+<div id="4bdbbf04" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>best_k <span class="op">=</span> <span class="dv">4</span></span>
@@ -1177,8 +1170,21 @@ Millie's average rating: 2.71 / 5.00</code></pre>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> kmeans.fit_predict(X)  </span>
 <span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>df_skills[<span class="st">'cluster'</span>] <span class="op">=</span> labels  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[39]</span><span class="ansi-green-fg">, line 5</span>
+<span class="ansi-green-fg">      3</span> best_k = <span class="ansi-green-fg">4</span>
+<span class="ansi-green-fg">      4</span> kmeans = KMeans(n_clusters=best_k, random_state=<span class="ansi-green-fg">42</span>, n_init=<span class="ansi-green-fg">10</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> labels = kmeans.fit_predict(<span class="ansi-yellow-bg">X</span>)  
+<span class="ansi-green-fg">      7</span> df_skills[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">cluster</span><span class="ansi-yellow-fg">'</span>] = labels  
+
+<span class="ansi-red-fg">NameError</span>: name 'X' is not defined</pre>
 </div>
-<div id="df89b43a" class="cell">
+</div>
+</div>
+<div id="df89b43a" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> collections <span class="im">import</span> Counter</span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.decomposition <span class="im">import</span> PCA</span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1196,8 +1202,22 @@ Millie's average rating: 2.71 / 5.00</code></pre>
 <span id="cb47-15"><a href="#cb47-15" aria-hidden="true" tabindex="-1"></a>    skill_words <span class="op">=</span> <span class="st">' '</span>.join(cluster_data[<span class="st">'skills_text'</span>]).split()</span>
 <span id="cb47-16"><a href="#cb47-16" aria-hidden="true" tabindex="-1"></a>    top_skills <span class="op">=</span> [w <span class="cf">for</span> w, _ <span class="kw">in</span> Counter(skill_words).most_common(<span class="dv">5</span>)]</span>
 <span id="cb47-17"><a href="#cb47-17" aria-hidden="true" tabindex="-1"></a>    cluster_labels[c] <span class="op">=</span> <span class="st">', '</span>.join(top_skills)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[32]</span><span class="ansi-green-fg">, line 5</span>
+<span class="ansi-green-fg">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">sklearn</span><span class="ansi-blue-fg ansi-bold">.</span><span class="ansi-blue-fg ansi-bold">decomposition</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">import</span> PCA
+<span class="ansi-green-fg">      4</span> pca = PCA(n_components=<span class="ansi-green-fg">2</span>)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> X_pca = pca.fit_transform(<span class="ansi-yellow-bg">X</span>.toarray())  
+<span class="ansi-green-fg">      6</span> df_skills[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">PCA1</span><span class="ansi-yellow-fg">'</span>] = X_pca[:, <span class="ansi-green-fg">0</span>]
+<span class="ansi-green-fg">      7</span> df_skills[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">PCA2</span><span class="ansi-yellow-fg">'</span>] = X_pca[:, <span class="ansi-green-fg">1</span>]
+
+<span class="ansi-red-fg">NameError</span>: name 'X' is not defined</pre>
 </div>
-<div id="00693b5e" class="cell">
+</div>
+</div>
+<div id="00693b5e" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
 <span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1215,43 +1235,123 @@ Millie's average rating: 2.71 / 5.00</code></pre>
 <span id="cb48-15"><a href="#cb48-15" aria-hidden="true" tabindex="-1"></a>plt.legend(title<span class="op">=</span><span class="st">'Cluster'</span>)</span>
 <span id="cb48-16"><a href="#cb48-16" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
 <span id="cb48-17"><a href="#cb48-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_analysis_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<div id="17489d74" class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> vectorizer.get_feature_names_out()</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA loading matrix  DataFrame</span></span>
-<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>loadings <span class="op">=</span> pd.DataFrame(pca.components_.T,  </span>
-<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>                        columns<span class="op">=</span>[<span class="st">'PC1'</span>, <span class="st">'PC2'</span>],  </span>
-<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>                        index<span class="op">=</span>selected_features)  </span>
-<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loadings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>                    PC1       PC2
-access         0.017736  0.076920
-accounting    -0.011342  0.004536
-amazon         0.030360 -0.012343
-analysis       0.077540  0.031537
-analytical     0.014053  0.013053
-...                 ...       ...
-user          -0.000095  0.006242
-visualization  0.039281 -0.001602
-warehousing    0.025778  0.009641
-workflow       0.002306  0.004493
-writing        0.006385  0.023276
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[35]</span><span class="ansi-green-fg">, line 5</span>
+<span class="ansi-green-fg">      2</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">seaborn</span><span style="color:rgb(188,188,188)"> </span><span style="font-weight:bold;color:rgb(0,135,0)">as</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">sns</span>
+<span class="ansi-green-fg">      4</span> plt.figure(figsize=(<span class="ansi-green-fg">12</span>, <span class="ansi-green-fg">8</span>))
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">5</span> <span class="ansi-yellow-bg">sns</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">scatterplot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">df_skills</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">PCA1</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">PCA2</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">hue</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">cluster</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">palette</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">tab10</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">s</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">50</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">alpha</span><span class="ansi-yellow-bg">=</span><span class="ansi-green-fg ansi-yellow-bg">0.6</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">      8</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> i, row <span style="font-weight:bold;color:rgb(175,0,255)">in</span> cluster_centers.iterrows():
+<span class="ansi-green-fg">      9</span>     plt.text(row[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">PCA1</span><span class="ansi-yellow-fg">'</span>], row[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">PCA2</span><span class="ansi-yellow-fg">'</span>], cluster_labels[i], fontsize=<span class="ansi-green-fg">10</span>, weight=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">bold</span><span class="ansi-yellow-fg">'</span>,
+<span class="ansi-green-fg">     10</span>              bbox=<span style="color:rgb(0,135,0)">dict</span>(facecolor=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">white</span><span class="ansi-yellow-fg">'</span>, alpha=<span class="ansi-green-fg">0.8</span>, boxstyle=<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">round,pad=0.3</span><span class="ansi-yellow-fg">'</span>))
 
-[100 rows x 2 columns]</code></pre>
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS-11/.venv/lib/python3.12/site-packages/seaborn/relational.py:615</span>, in <span class="ansi-cyan-fg">scatterplot</span><span class="ansi-blue-fg">(data, x, y, hue, size, style, palette, hue_order, hue_norm, sizes, size_order, size_norm, markers, style_order, legend, ax, **kwargs)</span>
+<span class="ansi-green-fg">    606</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">scatterplot</span>(
+<span class="ansi-green-fg">    607</span>     data=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, *,
+<span class="ansi-green-fg">    608</span>     x=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, y=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, hue=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, size=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, style=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    612</span>     **kwargs
+<span class="ansi-green-fg">    613</span> ):
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">615</span>     p = <span class="ansi-yellow-bg">_ScatterPlotter</span><span class="ansi-yellow-bg">(</span>
+<span class="ansi-green-fg">    616</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    617</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">variables</span><span class="ansi-yellow-bg">=</span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">dict</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">y</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">hue</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">hue</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">size</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">size</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">style</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">style</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span>
+<span class="ansi-green-fg">    618</span> <span class="ansi-yellow-bg">        </span><span class="ansi-yellow-bg">legend</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">legend</span>
+<span class="ansi-green-fg">    619</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    621</span>     p.map_hue(palette=palette, order=hue_order, norm=hue_norm)
+<span class="ansi-green-fg">    622</span>     p.map_size(sizes=sizes, order=size_order, norm=size_norm)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS-11/.venv/lib/python3.12/site-packages/seaborn/relational.py:396</span>, in <span class="ansi-cyan-fg">_ScatterPlotter.__init__</span><span class="ansi-blue-fg">(self, data, variables, legend)</span>
+<span class="ansi-green-fg">    387</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">__init__</span>(<span style="color:rgb(0,135,0)">self</span>, *, data=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>, variables={}, legend=<span style="font-weight:bold;color:rgb(0,135,0)">None</span>):
+<span class="ansi-green-fg">    388</span> 
+<span class="ansi-green-fg">    389</span>     <span style="font-style:italic;color:rgb(95,135,135)"># TODO this is messy, we want the mapping to be agnostic about</span>
+<span class="ansi-green-fg">    390</span>     <span style="font-style:italic;color:rgb(95,135,135)"># the kind of plot to draw, but for the time being we need to set</span>
+<span class="ansi-green-fg">    391</span>     <span style="font-style:italic;color:rgb(95,135,135)"># this information so the SizeMapping can use it</span>
+<span class="ansi-green-fg">    392</span>     <span style="color:rgb(0,135,0)">self</span>._default_size_range = (
+<span class="ansi-green-fg">    393</span>         np.r_[<span class="ansi-green-fg">.5</span>, <span class="ansi-green-fg">2</span>] * np.square(mpl.rcParams[<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">lines.markersize</span><span class="ansi-yellow-fg">"</span>])
+<span class="ansi-green-fg">    394</span>     )
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">396</span>     <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">super</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">.</span><span class="ansi-blue-fg ansi-yellow-bg">__init__</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">variables</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">variables</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    398</span>     <span style="color:rgb(0,135,0)">self</span>.legend = legend
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS-11/.venv/lib/python3.12/site-packages/seaborn/_base.py:634</span>, in <span class="ansi-cyan-fg">VectorPlotter.__init__</span><span class="ansi-blue-fg">(self, data, variables)</span>
+<span class="ansi-green-fg">    629</span> <span style="font-style:italic;color:rgb(95,135,135)"># var_ordered is relevant only for categorical axis variables, and may</span>
+<span class="ansi-green-fg">    630</span> <span style="font-style:italic;color:rgb(95,135,135)"># be better handled by an internal axis information object that tracks</span>
+<span class="ansi-green-fg">    631</span> <span style="font-style:italic;color:rgb(95,135,135)"># such information and is set up by the scale_* methods. The analogous</span>
+<span class="ansi-green-fg">    632</span> <span style="font-style:italic;color:rgb(95,135,135)"># information for numeric axes would be information about log scales.</span>
+<span class="ansi-green-fg">    633</span> <span style="color:rgb(0,135,0)">self</span>._var_ordered = {<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">x</span><span class="ansi-yellow-fg">"</span>: <span style="font-weight:bold;color:rgb(0,135,0)">False</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">y</span><span class="ansi-yellow-fg">"</span>: <span style="font-weight:bold;color:rgb(0,135,0)">False</span>}  <span style="font-style:italic;color:rgb(95,135,135)"># alt., used DefaultDict</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">634</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">assign_variables</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">variables</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    636</span> <span style="font-style:italic;color:rgb(95,135,135)"># TODO Lots of tests assume that these are called to initialize the</span>
+<span class="ansi-green-fg">    637</span> <span style="font-style:italic;color:rgb(95,135,135)"># mappings to default values on class initialization. I'd prefer to</span>
+<span class="ansi-green-fg">    638</span> <span style="font-style:italic;color:rgb(95,135,135)"># move away from that and only have a mapping when explicitly called.</span>
+<span class="ansi-green-fg">    639</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> var <span style="font-weight:bold;color:rgb(175,0,255)">in</span> [<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">hue</span><span class="ansi-yellow-fg">"</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">size</span><span class="ansi-yellow-fg">"</span>, <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">style</span><span class="ansi-yellow-fg">"</span>]:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS-11/.venv/lib/python3.12/site-packages/seaborn/_base.py:679</span>, in <span class="ansi-cyan-fg">VectorPlotter.assign_variables</span><span class="ansi-blue-fg">(self, data, variables)</span>
+<span class="ansi-green-fg">    674</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    675</span>     <span style="font-style:italic;color:rgb(95,135,135)"># When dealing with long-form input, use the newer PlotData</span>
+<span class="ansi-green-fg">    676</span>     <span style="font-style:italic;color:rgb(95,135,135)"># object (internal but introduced for the objects interface)</span>
+<span class="ansi-green-fg">    677</span>     <span style="font-style:italic;color:rgb(95,135,135)"># to centralize / standardize data consumption logic.</span>
+<span class="ansi-green-fg">    678</span>     <span style="color:rgb(0,135,0)">self</span>.input_format = <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">long</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">679</span>     plot_data = <span class="ansi-yellow-bg">PlotData</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">variables</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    680</span>     frame = plot_data.frame
+<span class="ansi-green-fg">    681</span>     names = plot_data.names
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS-11/.venv/lib/python3.12/site-packages/seaborn/_core/data.py:58</span>, in <span class="ansi-cyan-fg">PlotData.__init__</span><span class="ansi-blue-fg">(self, data, variables)</span>
+<span class="ansi-green-fg">     51</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg">__init__</span>(
+<span class="ansi-green-fg">     52</span>     <span style="color:rgb(0,135,0)">self</span>,
+<span class="ansi-green-fg">     53</span>     data: DataSource,
+<span class="ansi-green-fg">     54</span>     variables: <span style="color:rgb(0,135,0)">dict</span>[<span style="color:rgb(0,135,0)">str</span>, VariableSpec],
+<span class="ansi-green-fg">     55</span> ):
+<span class="ansi-green-fg">     57</span>     data = handle_data_source(data)
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">58</span>     frame, names, ids = <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_assign_variables</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">data</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">variables</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">     60</span>     <span style="color:rgb(0,135,0)">self</span>.frame = frame
+<span class="ansi-green-fg">     61</span>     <span style="color:rgb(0,135,0)">self</span>.names = names
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/AD688-GROUP3-JOB-MARKET-ANALYSIS-11/.venv/lib/python3.12/site-packages/seaborn/_core/data.py:232</span>, in <span class="ansi-cyan-fg">PlotData._assign_variables</span><span class="ansi-blue-fg">(self, data, variables)</span>
+<span class="ansi-green-fg">    230</span>     <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    231</span>         err += <span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">An entry with this name does not appear in `data`.</span><span class="ansi-yellow-fg">"</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">232</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(err)
+<span class="ansi-green-fg">    234</span> <span style="font-weight:bold;color:rgb(0,135,0)">else</span>:
+<span class="ansi-green-fg">    235</span> 
+<span class="ansi-green-fg">    236</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Otherwise, assume the value somehow represents data</span>
+<span class="ansi-green-fg">    237</span> 
+<span class="ansi-green-fg">    238</span>     <span style="font-style:italic;color:rgb(95,135,135)"># Ignore empty data structures</span>
+<span class="ansi-green-fg">    239</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">isinstance</span>(val, Sized) <span style="font-weight:bold;color:rgb(175,0,255)">and</span> <span style="color:rgb(0,135,0)">len</span>(val) == <span class="ansi-green-fg">0</span>:
+
+<span class="ansi-red-fg">ValueError</span>: Could not interpret value `PCA1` for `x`. An entry with this name does not appear in `data`.</pre>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 1200x800 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+<div id="17489d74" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> vectorizer.get_feature_names_out()</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co"># PCA loading matrix  DataFrame</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>loadings <span class="op">=</span> pd.DataFrame(pca.components_.T,  </span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>                        columns<span class="op">=</span>[<span class="st">'PC1'</span>, <span class="st">'PC2'</span>],  </span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>                        index<span class="op">=</span>selected_features)  </span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(loadings)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[37]</span><span class="ansi-green-fg">, line 4</span>
+<span class="ansi-green-fg">      1</span> selected_features = vectorizer.get_feature_names_out()
+<span class="ansi-green-fg">      3</span> <span style="font-style:italic;color:rgb(95,135,135)"># PCA loading matrix  DataFrame</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">4</span> loadings = pd.DataFrame(<span class="ansi-yellow-bg">pca</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">components_</span>.T,  
+<span class="ansi-green-fg">      5</span>                         columns=[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">PC1</span><span class="ansi-yellow-fg">'</span>, <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">PC2</span><span class="ansi-yellow-fg">'</span>],  
+<span class="ansi-green-fg">      6</span>                         index=selected_features)  
+<span class="ansi-green-fg">      7</span> <span style="color:rgb(0,135,0)">print</span>(loadings)
+
+<span class="ansi-red-fg">AttributeError</span>: 'PCA' object has no attribute 'components_'</pre>
+</div>
 </div>
 </div>
 </section>
 <section id="plot-5-random-forest-classification" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> PLOT 5 Random Forest Classification</h1>
-<div id="63b1b61b" class="cell" data-execution_count="26">
+<div id="63b1b61b" class="cell" data-execution_count="38">
 <div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span>
