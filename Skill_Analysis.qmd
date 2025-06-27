@@ -54,4 +54,31 @@ This group is obviously **highly technical, covering core skills (such as Progra
 
 
 #  Random Forest 
-(Marco's content)
+
+## Model Design Process
+
+Below is an illustration of how the Random Forest model was designed in order to predict the salary of an analyst position based on a list of skills.
+
+![](output/figures/RF_slide.png) 
+
+## Performance and Assessment
+
+After developing the model we assessed its performance using the following metrics:
+
+        RMSE: $24,094.44
+        Interpretation: Predicted salaries deviate from actual salaries by approximately $24,094. Lower RMSE indicates better accuracy.
+
+        R²: 0.635
+        Interpretation: The model explains 63.5% of the variation in salaries based on the input features. Higher R² reflects stronger predictive power.
+
+        Predicted Salary: $91,979.83
+        Skills used: ["communication", "time_management", "team_leadership", "problem_solving", "critical_thinking","detail_oriented", "innovation", "data_analysis", "statistical_modeling", "dashboard", "power_bi", "etl",
+        "python_", "sql_", "microsoft_excel"]
+
+## Strategic Use of the Random Forest Model
+
+The Random Forest regression model estimated an expected salary of $91,979.83 using a defined set of 15 skills transformed into binary vector inputs. The RMSE of approximately $24,094 indicates individual salaries may differ substantially due to unmeasured factors. However, the R² value of 0.635 demonstrates that the model is able to capture over 60% of the variation in salaries even with the limited focus on skills alone.
+
+From the beginning, this model was designed to facilitate actionability in the short term. That is why other features such as education level and minimum years of experience were not considered, because they wouldn't be something that could be easily changed. However, location data (state) was tested as this is a decision one could make when searching for jobs but ultimately excluded because it reduced model performance and added complexity without a proportional gain in precision. The emphasis on modifiable inputs—skills rather than static traits—enables actionable insights for users who want to understand how improving competencies can impact compensation over time. Additionally, selecting only the top 100 skills from the dataset enhances the model's performance and the users' benefit from it.
+
+Overall, the model functions as a practical guidance tool, as envisioned, rather than a pinpoint prediction. It offers a way to inform career planning, prioritize skill development, and benchmark earning potential, providing directional insights (a compass) rather than precise estimates (a coordinate).

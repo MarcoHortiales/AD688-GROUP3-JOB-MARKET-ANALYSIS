@@ -5,7 +5,7 @@ title: "Career Strategy"
 
 ## Educational Development
 
-**Marco's Educational Recommand**:
+**Marco's Educational Recommendations**:
 
 SQL for Data Science – Coursera（UC Davis）
 
@@ -13,7 +13,7 @@ Data Engineering with Python – Coursera（IBM）
 
 Power BI Essential Training – LinkedIn Learning
 
-**Millie's Educational Recommand**:
+**Millie's Educational Recommendations**:
 
 Intro to SQL – Mode Analytics
 
