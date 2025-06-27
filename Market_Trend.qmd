@@ -7,7 +7,7 @@ title: "Key Findings"
 ```{=html}
 <iframe width="780" height="600" src="./output/figures/Plot 1 Geographic distribution of salary and job demand  state_map.html" title="Geographic distribution of salary and job demand"></iframe>
 ```
-(Marco's content)
+In order to generate valuable and actionable insights there need to be a general understanding of the job market. The following chart shows the geographic distribution of salary and job demand across the United States. The salary plot reveals that the Northeastern region holds the cluster of states with the highest average salaries with Connecticut, Vermont, and New Jersey being the top three. The job demand plot shows  great disparity in job openings across the country with Texas and California being the top job generators. It is important to note that the graphs dont answer many questions about the job market, but instead provide a starting point for deeper analysis. Here we can begin exploring the data with specific goals in mind, actionability for career strategy design.
 
 
 # Select (LOT_NAME_SPECIFIC) Mean Salary & Job Demand  
