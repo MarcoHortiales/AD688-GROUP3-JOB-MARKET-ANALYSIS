@@ -13,6 +13,8 @@ website:
         text: Skill Analysis
       - href: Career_Strategy.qmd
         text: Career Strategy
+      - href: Summary.qmd
+        text: Summary
 format:
   html:
     theme:

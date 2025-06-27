@@ -3,12 +3,52 @@ title: "Career Strategy"
 ---
 
 
-# Skills Evaluation 
+## Educational Development
+
+**Marco's Educational Recommand**:
+
+SQL for Data Science – Coursera（UC Davis）
+
+Data Engineering with Python – Coursera（IBM）
+
+Power BI Essential Training – LinkedIn Learning
+
+**Millie's Educational Recommand**:
+
+Intro to SQL – Mode Analytics
+
+Statistics for Data Science – Coursera
+
+Tableau for Analytics – Coursera
+
+**Supplement skills and knowledge through courses and build a solid theoretical foundation and choose tool courses that have the most obvious gap with current skills, and combine them with practical exercises to enhance the absorption effect.**
 
 
+## Project-Based Application
+
+**Marco's Project Exercises**:
+
+Netflix Movies & TV Shows (model development and dashboard implementation) – Kaggle
+
+NASA Bearing Dataset (R&D application scenario) – Kaggle
+
+**Millie's Project Exercises**:
+
+Used-Car Data (SQL and dashboard operations) – Kaggle
+
+Hotel Booking Demand (simulated consultant scenario analysis) – Kaggle
+
+**Apply skills to real data sets through actual project operations, accumulate works and experience (such as business analysis, consulting, data science) and organize them into a portfolio.**
 
 
+## Skills to Improve
 
+**Marco's Key Skills**:
 
+Python、SQL、Dashboarding、Machine Learning
 
-# Career Strategy 
+**Millie's Key Skills**:
+
+SQL、Problem Solving、Dashboarding、Data Analysis、Statistics
+
+**Clearly list the technologies and capabilities that need to be strengthened, make strategic plans. Prioritize strengthening core data skills (such as SQL, Dashboarding), and simultaneously improve logical reasoning and problem-solving abilities.** 
