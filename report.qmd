@@ -5,3 +5,9 @@ format: docx
 
 
 
+{{< include "Introduction.qmd" >}} 
+{{< include "Market_Trend.qmd" >}} 
+{{< include "Skill_Analysis.qmd" >}} 
+{{< embed data_analysis.ipynb >}}
+{{< include "Career_Strategy.qmd" >}} 
+{{< include "Summary.qmd" >}} 
